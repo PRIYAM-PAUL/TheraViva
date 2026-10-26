@@ -1,37 +1,89 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TheraViva
 
-## Getting Started
+Marketing and portfolio website for a Delhi-based therapy practice offering
+**occupational therapy**, **speech & language therapy**, and **audiology** for
+children and adults.
 
-First, run the development server:
+Built with Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS v4.
+
+> **Phase 1: public website only.** There is no backend, database, or payment
+> processing. Appointment requests are sent to the practice via WhatsApp or
+> email. Media shown is placeholder content until real assets are supplied, and
+> prices are indicative.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev     # dev server (Turbopack)
+npm run build   # production build
+npm run start   # run the production build
+npm run lint    # eslint
+npx tsc --noEmit  # type-check
+```
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
+| Concern | Choice |
+| --- | --- |
+| Framework | Next.js 16.3.6 (App Router, Turbopack) |
+| UI | React 19.2.8 |
+| Language | TypeScript 5 (strict) |
+| Styling | Tailwind CSS v4, `tw-animate-css` |
+| Icons | lucide-react |
+| Primitives | @base-ui/react |
+| Variants | class-variance-authority |
+| Class utils | clsx + tailwind-merge (`cn`) |
+| Validation | zod v4 |
+| Fonts | Fraunces (display) + Geist (UI) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Routes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Path | Description |
+| --- | --- |
+| `/` | Homepage |
+| `/services`, `/services/[discipline]` | Services hub and per-discipline pages |
+| `/conditions`, `/conditions/[slug]` | 15 condition pages |
+| `/team`, `/team/[slug]` | Team hub and professional profiles |
+| `/portfolio`, `/portfolio/[album]` | Media gallery and collections |
+| `/pricing` | Fees and packages |
+| `/faq` | Frequently asked questions |
+| `/blog`, `/blog/[slug]` | Articles |
+| `/locations/[city]` | Location page |
+| `/contact`, `/referral` | Contact and professional referrals |
+| `/about` | About the practice |
+| `/book` | Appointment request flow |
+| `/legal/*` | Privacy, terms, refunds, disclaimer, accessibility |
 
-## Deploy on Vercel
+## Editing content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+All authored content lives in `src/data/` — clinicians, services, conditions,
+pricing, portfolio, FAQs, blog posts and site copy. Site identity (name, contact
+details, hours, navigation) is in `src/config/site.ts`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# TheraViva
+See `PROFESSIONALS.md` for the clinicians' full details and the list of items
+that still need verification.
+
+## Documentation
+
+- [`THERAVIVA_MASTER_PROMPT.md`](./THERAVIVA_MASTER_PROMPT.md) — working rules
+- [`PROJECT_CONTEXT.md`](./PROJECT_CONTEXT.md) — architecture and design context
+- [`PROFESSIONALS.md`](./PROFESSIONALS.md) — clinician records + verification list
+- [`ROADMAP.md`](./ROADMAP.md) — phased plan (Phase 1 built; 2–6 planned)
+- [`DEPENDENCY_MAP.md`](./DEPENDENCY_MAP.md) — dependency graph
+- [`DEPENDENCY_INVENTORY.md`](./DEPENDENCY_INVENTORY.md) — file-by-file status
+- [`AI_CHANGELOG_TEMPLATE.md`](./AI_CHANGELOG_TEMPLATE.md) — change log
+- [`.env.example`](./.env.example) — environment variable placeholders
+
+## Environment
+
+Copy `.env.example` to `.env.local`. Analytics are inert until ids are set **and**
+a visitor consents.
