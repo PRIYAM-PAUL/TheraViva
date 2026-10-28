@@ -74,6 +74,6 @@ export function AlertDescription({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
-    <div className={cn("text-sm text-muted-foreground", className)} {...props} />
+    <p className={cn("text-sm text-muted-foreground", className)} {...props} />
   );
 }

@@ -31,6 +31,9 @@ export const professionals: Professional[] = [
       "sensory-processing",
       "handwriting",
       "developmental-delay",
+      // Added so the professional↔condition links agree in both directions
+      // (the condition page already lists MD Irfan for Down syndrome).
+      "down-syndrome",
       "stroke",
       "parkinsons-disease",
       "dementia",
@@ -196,6 +199,9 @@ export const professionals: Professional[] = [
       "adhd",
       "down-syndrome",
       "cerebral-palsy",
+      // Added so the professional↔condition links agree in both directions
+      // (the condition page already lists Abhishek Kumar for developmental delay).
+      "developmental-delay",
       "speech-language-delay",
       "speech-sound-disorder",
       "stuttering",

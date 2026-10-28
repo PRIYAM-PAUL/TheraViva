@@ -1,0 +1,1966 @@
+{
+  "generatedAt": "2026-10-28T12:36:09.239Z",
+  "source": "frontend/src/data",
+  "services": [
+    {
+      "id": "ot-assessment",
+      "slug": "occupational-therapy-assessment",
+      "discipline": "occupational-therapy",
+      "title": "Occupational Therapy Assessment",
+      "summary": "A structured baseline assessment that identifies strengths, difficulties and therapy priorities.",
+      "description": [
+        "A first appointment to understand what is hard and why. It combines clinical observation with standardised and functional assessment appropriate to the person's age and needs.",
+        "You leave with a clear picture of priorities, a recommended therapy plan, and practical next steps — including whether ongoing therapy is needed at all."
+      ],
+      "durationMinutes": 60,
+      "modes": [
+        "in-person",
+        "video"
+      ],
+      "conditions": [
+        "cerebral-palsy",
+        "autism-spectrum-disorder",
+        "adhd",
+        "sensory-processing",
+        "developmental-delay",
+        "handwriting"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 1200
+        },
+        {
+          "mode": "video",
+          "amountInr": 1200
+        }
+      ],
+      "priceNote": "Includes a written summary and home recommendations.",
+      "featured": true
+    },
+    {
+      "id": "paediatric-ot",
+      "slug": "paediatric-occupational-therapy",
+      "discipline": "occupational-therapy",
+      "title": "Paediatric Occupational Therapy",
+      "summary": "Ongoing one-to-one therapy for children, built around play and everyday goals.",
+      "description": [
+        "Regular sessions that develop the underlying skills a child needs for daily life — motor control, coordination, attention, self-care and independence.",
+        "Progress is reviewed openly against goals you agree together, with activities you can continue at home between sessions."
+      ],
+      "durationMinutes": 45,
+      "modes": [
+        "in-person",
+        "video"
+      ],
+      "conditions": [
+        "autism-spectrum-disorder",
+        "adhd",
+        "cerebral-palsy",
+        "developmental-delay",
+        "down-syndrome"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 900
+        },
+        {
+          "mode": "video",
+          "amountInr": 900
+        }
+      ],
+      "featured": true
+    },
+    {
+      "id": "sensory-integration",
+      "slug": "sensory-integration-therapy",
+      "discipline": "occupational-therapy",
+      "title": "Sensory Integration Therapy",
+      "summary": "Support for children who find everyday sensations overwhelming or underwhelming.",
+      "description": [
+        "A therapy approach that helps the nervous system organise and respond to sensory information — touch, movement, sound and body awareness.",
+        "Sessions are delivered in a sensory-rich environment and paired with a 'sensory diet' of strategies that fit into home and school routines."
+      ],
+      "durationMinutes": 45,
+      "modes": [
+        "in-person"
+      ],
+      "conditions": [
+        "sensory-processing",
+        "autism-spectrum-disorder",
+        "adhd"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 1000
+        }
+      ]
+    },
+    {
+      "id": "handwriting-school-readiness",
+      "slug": "handwriting-and-school-readiness",
+      "discipline": "occupational-therapy",
+      "title": "Handwriting & School Readiness",
+      "summary": "Targeted work on pencil control, letter formation, posture and classroom skills.",
+      "description": [
+        "For children whose handwriting is slow, tiring or hard to read, or who are not yet ready for the demands of a classroom.",
+        "Work covers grip and posture, fine-motor strength, letter formation, spacing, and the attention and organisation skills school requires."
+      ],
+      "durationMinutes": 45,
+      "modes": [
+        "in-person",
+        "video"
+      ],
+      "conditions": [
+        "handwriting",
+        "adhd",
+        "developmental-delay"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 900
+        },
+        {
+          "mode": "video",
+          "amountInr": 900
+        }
+      ]
+    },
+    {
+      "id": "adult-neuro-rehab-ot",
+      "slug": "adult-neuro-rehabilitation",
+      "discipline": "occupational-therapy",
+      "title": "Adult Neuro Rehabilitation (OT)",
+      "summary": "Regaining independence after stroke, Parkinson's, GBS or other neurological events.",
+      "description": [
+        "Rehabilitation focused on real daily tasks: dressing, eating, mobility around the home, and returning to the activities that matter.",
+        "Includes adaptation strategies and caregiver training, so progress holds up in the home environment."
+      ],
+      "durationMinutes": 45,
+      "modes": [
+        "in-person",
+        "video"
+      ],
+      "conditions": [
+        "stroke",
+        "parkinsons-disease",
+        "guillain-barre",
+        "dementia"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 1000
+        },
+        {
+          "mode": "video",
+          "amountInr": 1000
+        }
+      ]
+    },
+    {
+      "id": "home-programme-coaching",
+      "slug": "home-programme-and-parent-coaching",
+      "discipline": "occupational-therapy",
+      "title": "Home Programme & Parent Coaching",
+      "summary": "Short review sessions to keep therapy working between appointments.",
+      "description": [
+        "A focused session for reviewing progress, adjusting the home programme, and coaching parents or caregivers on what to do next.",
+        "Useful as a regular touchpoint between full therapy sessions, or for families who live far from the clinic."
+      ],
+      "durationMinutes": 30,
+      "modes": [
+        "video",
+        "phone"
+      ],
+      "conditions": [
+        "developmental-delay",
+        "handwriting"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ],
+      "prices": [
+        {
+          "mode": "video",
+          "amountInr": 600
+        },
+        {
+          "mode": "phone",
+          "amountInr": 600
+        }
+      ]
+    },
+    {
+      "id": "speech-language-assessment",
+      "slug": "speech-and-language-assessment",
+      "discipline": "speech-language",
+      "title": "Speech & Language Assessment",
+      "summary": "A clear picture of speech, language, and communication strengths and needs.",
+      "description": [
+        "A structured assessment of understanding, expression, speech sounds and social communication, appropriate to the child's age.",
+        "You receive a plain-language summary with prioritised goals and a recommended therapy plan."
+      ],
+      "durationMinutes": 60,
+      "modes": [
+        "in-person",
+        "video"
+      ],
+      "conditions": [
+        "speech-language-delay",
+        "speech-sound-disorder",
+        "autism-spectrum-disorder",
+        "stuttering"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 1200
+        },
+        {
+          "mode": "video",
+          "amountInr": 1200
+        }
+      ],
+      "priceNote": "Includes a written summary and home suggestions.",
+      "featured": true
+    },
+    {
+      "id": "early-intervention",
+      "slug": "early-intervention",
+      "discipline": "speech-language",
+      "title": "Early Intervention (0–6 years)",
+      "summary": "Early, play-based support when a child is late to talk or communicate.",
+      "description": [
+        "The earliest years matter most. This programme supports first sounds, first words, attention and turn-taking through play and daily routines.",
+        "Parents are coached throughout, because progress at this age happens mostly at home."
+      ],
+      "durationMinutes": 45,
+      "modes": [
+        "in-person",
+        "video"
+      ],
+      "conditions": [
+        "speech-language-delay",
+        "autism-spectrum-disorder",
+        "down-syndrome"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 900
+        },
+        {
+          "mode": "video",
+          "amountInr": 900
+        }
+      ],
+      "featured": true
+    },
+    {
+      "id": "speech-sound-therapy",
+      "slug": "speech-sound-therapy",
+      "discipline": "speech-language",
+      "title": "Speech Sound & Articulation Therapy",
+      "summary": "Clearer speech when sounds are missed, swapped or distorted.",
+      "description": [
+        "Targeted work on specific sounds and sound patterns, so speech becomes easier to understand.",
+        "Includes practice routines families can run in a few minutes a day."
+      ],
+      "durationMinutes": 45,
+      "modes": [
+        "in-person",
+        "video"
+      ],
+      "conditions": [
+        "speech-sound-disorder",
+        "cerebral-palsy",
+        "down-syndrome"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 900
+        },
+        {
+          "mode": "video",
+          "amountInr": 900
+        }
+      ]
+    },
+    {
+      "id": "language-therapy",
+      "slug": "language-therapy",
+      "discipline": "speech-language",
+      "title": "Language Therapy (Receptive & Expressive)",
+      "summary": "Building vocabulary, sentence formation, and understanding.",
+      "description": [
+        "For children who struggle to understand language, express themselves, or put sentences together.",
+        "Work covers vocabulary, concepts, following directions, sentence building, and comprehension in real conversations."
+      ],
+      "durationMinutes": 45,
+      "modes": [
+        "in-person",
+        "video"
+      ],
+      "conditions": [
+        "speech-language-delay",
+        "autism-spectrum-disorder",
+        "down-syndrome"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 900
+        },
+        {
+          "mode": "video",
+          "amountInr": 900
+        }
+      ]
+    },
+    {
+      "id": "fluency-therapy",
+      "slug": "fluency-therapy",
+      "discipline": "speech-language",
+      "title": "Fluency / Stuttering Therapy",
+      "summary": "Practical strategies for smoother, more confident speech.",
+      "description": [
+        "Evidence-informed work on fluency, plus the confidence and communication skills that go with it.",
+        "Suitable for children and adults, with strategies for everyday situations such as school, work and phone calls."
+      ],
+      "durationMinutes": 45,
+      "modes": [
+        "in-person",
+        "video"
+      ],
+      "conditions": [
+        "stuttering"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 900
+        },
+        {
+          "mode": "video",
+          "amountInr": 900
+        }
+      ]
+    },
+    {
+      "id": "social-communication",
+      "slug": "social-communication-therapy",
+      "discipline": "speech-language",
+      "title": "Social Communication Therapy",
+      "summary": "Building functional communication for real-life interaction.",
+      "description": [
+        "Support for children who find it hard to use language socially — starting conversations, taking turns, and understanding social cues.",
+        "Goals are practical and shaped around the child's daily settings, including school and family life."
+      ],
+      "durationMinutes": 45,
+      "modes": [
+        "in-person",
+        "video"
+      ],
+      "conditions": [
+        "autism-spectrum-disorder",
+        "adhd"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 900
+        },
+        {
+          "mode": "video",
+          "amountInr": 900
+        }
+      ]
+    },
+    {
+      "id": "hearing-assessment",
+      "slug": "hearing-assessment",
+      "discipline": "audiology",
+      "title": "Hearing Assessment & Evaluation",
+      "summary": "Basic audiological assessment to understand hearing across the speech range.",
+      "description": [
+        "A structured hearing evaluation to establish whether hearing is contributing to communication or learning difficulties.",
+        "Results are explained in plain language, with clear recommendations on what to do next."
+      ],
+      "durationMinutes": 45,
+      "modes": [
+        "in-person"
+      ],
+      "conditions": [
+        "hearing-loss",
+        "speech-language-delay"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 1000
+        }
+      ],
+      "featured": true
+    },
+    {
+      "id": "hearing-aid-fitting",
+      "slug": "hearing-aid-fitting",
+      "discipline": "audiology",
+      "title": "Hearing Aid Selection & Fitting",
+      "summary": "Choosing the right device and fitting it properly for daily life.",
+      "description": [
+        "Guidance on selecting a hearing aid suited to the person's hearing profile, lifestyle and budget.",
+        "Includes fitting, real-world adjustment, and clear instruction on care and use."
+      ],
+      "durationMinutes": 60,
+      "modes": [
+        "in-person"
+      ],
+      "conditions": [
+        "hearing-loss"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 1500
+        }
+      ]
+    },
+    {
+      "id": "hearing-aid-programming",
+      "slug": "hearing-aid-programming",
+      "discipline": "audiology",
+      "title": "Hearing Aid Programming & Fine-Tuning",
+      "summary": "Adjusting a device so it actually works in the situations that matter.",
+      "description": [
+        "Follow-up tuning after fitting, based on how the device performs at home, at work and in noisy places.",
+        "Small adjustments often make the difference between a device that is worn and one that is left in a drawer."
+      ],
+      "durationMinutes": 30,
+      "modes": [
+        "in-person"
+      ],
+      "conditions": [
+        "hearing-loss"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 700
+        }
+      ]
+    },
+    {
+      "id": "hearing-aid-counselling",
+      "slug": "hearing-aid-counselling",
+      "discipline": "audiology",
+      "title": "Hearing Aid Troubleshooting & Counselling",
+      "summary": "Solving everyday device problems and building confidence in using it.",
+      "description": [
+        "Practical help with common issues — whistling, comfort, batteries, cleaning and connectivity.",
+        "Includes counselling for the user and their family on getting the most from the device."
+      ],
+      "durationMinutes": 30,
+      "modes": [
+        "in-person",
+        "phone"
+      ],
+      "conditions": [
+        "hearing-loss"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ],
+      "prices": [
+        {
+          "mode": "in-person",
+          "amountInr": 500
+        },
+        {
+          "mode": "phone",
+          "amountInr": 500
+        }
+      ]
+    }
+  ],
+  "professionals": [
+    {
+      "id": "md-irfan",
+      "slug": "md-irfan",
+      "name": "MD Irfan",
+      "headline": "Occupational Therapist · Paediatrics & Neuro-Rehabilitation",
+      "summary": "Master's-qualified occupational therapist helping children and adults build the everyday skills that make independence possible.",
+      "bio": [
+        "MD Irfan is an occupational therapist with a Master's in Occupational Therapy (Paediatrics) from Jamia Hamdard University, New Delhi. He works across paediatric, neurological, orthopaedic and psychiatric rehabilitation.",
+        "His clinical work centres on paediatric assessment, sensory integration, fine-motor and handwriting development, school readiness, and activities-of-daily-living (ADL) training — always paired with clear, practical parent and caregiver counselling.",
+        "He has delivered therapy in hospital, NGO and clinic settings, including child development centres, and works collaboratively with multidisciplinary teams to set functional, measurable goals that improve participation and quality of life."
+      ],
+      "disciplines": [
+        "occupational-therapy"
+      ],
+      "conditions": [
+        "cerebral-palsy",
+        "autism-spectrum-disorder",
+        "adhd",
+        "sensory-processing",
+        "handwriting",
+        "developmental-delay",
+        "down-syndrome",
+        "stroke",
+        "parkinsons-disease",
+        "dementia",
+        "guillain-barre"
+      ],
+      "skills": [
+        "Paediatric assessment",
+        "Sensory integration",
+        "Fine motor skill development",
+        "Handwriting intervention",
+        "School readiness",
+        "Activities of daily living (ADL) training",
+        "Individualised therapy planning",
+        "Patient assessment",
+        "Parent & caregiver counselling",
+        "Progress evaluation",
+        "Clinical documentation",
+        "Communication skills",
+        "Time management",
+        "Multidisciplinary team collaboration"
+      ],
+      "languages": [
+        "English",
+        "Hindi"
+      ],
+      "yearsExperience": 2,
+      "credentials": [
+        {
+          "title": "Master of Occupational Therapy (Paediatrics)",
+          "institution": "Jamia Hamdard University, New Delhi",
+          "period": "2024 – 2026"
+        },
+        {
+          "title": "Bachelor of Occupational Therapy",
+          "institution": "Jamia Hamdard University, New Delhi",
+          "period": "2019 – 2024"
+        },
+        {
+          "title": "Senior Secondary (12th, Science)",
+          "institution": "CBSE Board, New Delhi",
+          "period": "2019"
+        },
+        {
+          "title": "Secondary (10th)",
+          "institution": "CBSE Board, New Delhi",
+          "period": "2017"
+        }
+      ],
+      "registrations": [
+        {
+          "label": "Professional registration",
+          "value": "On request"
+        }
+      ],
+      "experience": [
+        {
+          "role": "Consultant Occupational Therapist",
+          "organisation": "Air Force Families Welfare Association (AFFWA)",
+          "period": "Nov 2025 – Present",
+          "location": "New Delhi",
+          "points": [
+            "Assesses and treats paediatric and neurological clients through individualised occupational therapy programmes.",
+            "Develops treatment plans that improve functional independence and quality of life.",
+            "Educates patients and caregivers on therapy goals, home programmes and rehabilitation strategies."
+          ]
+        },
+        {
+          "role": "Consultant Occupational Therapist",
+          "organisation": "NGO Samadhan",
+          "period": "Jun 2025 – Present",
+          "location": "New Delhi",
+          "points": [
+            "Provides occupational therapy to children with developmental and neurological conditions.",
+            "Conducts functional assessments and monitors progress over time.",
+            "Collaborates with families to achieve individualised therapy goals."
+          ]
+        },
+        {
+          "role": "Occupational Therapist",
+          "organisation": "Neuromotion (Pedigym)",
+          "period": "Jan 2025 – Apr 2025",
+          "location": "New Delhi",
+          "points": [
+            "Delivered occupational therapy interventions for paediatric clients.",
+            "Implemented evidence-based techniques to improve motor, sensory and cognitive skills.",
+            "Maintained patient documentation and progress reports."
+          ]
+        },
+        {
+          "role": "Intern — Neurology & Psychiatry",
+          "organisation": "GB Pant Hospital",
+          "period": "Jun 2024 – Jul 2024",
+          "location": "New Delhi",
+          "points": [
+            "Assisted in the assessment and rehabilitation of neurological and psychiatric patients.",
+            "Observed and implemented individualised occupational therapy treatment plans.",
+            "Worked alongside multidisciplinary healthcare professionals."
+          ]
+        },
+        {
+          "role": "Intern — Orthopaedics",
+          "organisation": "Indira Gandhi Hospital",
+          "period": "Apr 2024 – May 2024",
+          "location": "New Delhi",
+          "points": [
+            "Supported rehabilitation for patients recovering from injuries and surgery.",
+            "Assisted patients in improving mobility, strength and activities of daily living.",
+            "Participated in assessment and progress documentation."
+          ]
+        },
+        {
+          "role": "Intern — Paediatrics (Child Development Centre)",
+          "organisation": "Lok Nayak Hospital",
+          "period": "Feb 2024 – Mar 2024",
+          "location": "New Delhi",
+          "points": [
+            "Worked with children experiencing developmental and neurological disorders.",
+            "Observed paediatric assessments and therapeutic interventions.",
+            "Supported sessions focused on motor, sensory and cognitive skills."
+          ]
+        }
+      ],
+      "volunteering": [
+        {
+          "role": "Volunteer Occupational Therapist",
+          "organisation": "Moms Belief Samvedna",
+          "period": "Jan 2023 – Jan 2024",
+          "points": [
+            "Worked with children diagnosed with Autism Spectrum Disorder (ASD), ADHD and Cerebral Palsy.",
+            "Assisted in therapy planning and parent counselling under professional supervision."
+          ],
+          "volunteer": true
+        },
+        {
+          "role": "Volunteer Occupational Therapist",
+          "organisation": "Moms Belief Milestone",
+          "period": "Jun 2022 – Dec 2022",
+          "points": [
+            "Supported therapy sessions for children with developmental delays.",
+            "Assisted therapists in planning and conducting rehabilitation activities."
+          ],
+          "volunteer": true
+        }
+      ],
+      "email": "78609910mdirfan@gmail.com",
+      "phone": "+91 7838696558",
+      "photo": "/media/team/md-irfan.jpg"
+    },
+    {
+      "id": "abhishek-kumar",
+      "slug": "abhishek-kumar",
+      "name": "Abhishek Kumar",
+      "headline": "Speech Therapist · Audiologist (ASLP)",
+      "summary": "Speech-language therapist and audiology professional with 4+ years of experience supporting children's communication and hearing needs.",
+      "bio": [
+        "Abhishek Kumar is a qualified ASLP professional with a Diploma in Hearing, Language and Speech (DHLS) and 4+ years of experience across speech-language therapy and audiology services.",
+        "He works with children and families on early intervention, communication development and functional speech-language goals — from first sounds and vocabulary to sentence formation, comprehension and social communication.",
+        "Alongside therapy, he provides audiological assessment, hearing-aid selection, fitting, programming and fine-tuning, with practical counselling for clients and caregivers."
+      ],
+      "disciplines": [
+        "speech-language",
+        "audiology"
+      ],
+      "conditions": [
+        "autism-spectrum-disorder",
+        "adhd",
+        "down-syndrome",
+        "cerebral-palsy",
+        "developmental-delay",
+        "speech-language-delay",
+        "speech-sound-disorder",
+        "stuttering",
+        "hearing-loss"
+      ],
+      "skills": [
+        "Speech and language assessment",
+        "Individualised therapy planning and intervention",
+        "Early intervention & developmental communication support",
+        "Speech, language and communication skill development",
+        "Receptive and expressive language intervention",
+        "Functional and social communication training",
+        "Vocabulary, sentence formation and concept development",
+        "Following directions and auditory/verbal comprehension activities",
+        "Parent/caregiver guidance and home-based therapy support",
+        "Clinical documentation and progress monitoring",
+        "Basic audiological assessment and hearing evaluation",
+        "Hearing-aid selection and fitting",
+        "Hearing-aid programming / fine-tuning",
+        "Hearing-aid troubleshooting and user guidance",
+        "Client counselling and hearing-aid care instructions"
+      ],
+      "languages": [
+        "English",
+        "Hindi"
+      ],
+      "yearsExperience": 4,
+      "credentials": [
+        {
+          "title": "Diploma in Hearing, Language and Speech (DHLS)",
+          "period": "Completed"
+        }
+      ],
+      "registrations": [
+        {
+          "label": "RCI registration",
+          "value": "On request"
+        }
+      ],
+      "experience": [
+        {
+          "role": "Speech Therapist",
+          "organisation": "Samadhan NGO, Delhi",
+          "period": "Present",
+          "location": "Delhi",
+          "points": [
+            "Provides speech-language therapy and individualised intervention for children with communication and developmental needs."
+          ]
+        },
+        {
+          "role": "Speech Therapist",
+          "organisation": "DCWA — Delhi Commonwealth Women Association, Greater Kailash",
+          "period": "2 years",
+          "location": "New Delhi",
+          "points": [
+            "Delivered structured speech-language intervention, assessment support, therapy planning and progress-oriented clinical services."
+          ]
+        },
+        {
+          "role": "Speech Therapist",
+          "organisation": "Mom's Belief",
+          "period": "1 year",
+          "points": [
+            "Provided speech and language therapy with a focus on communication and functional language development."
+          ]
+        },
+        {
+          "role": "Audiology Services",
+          "organisation": "Clinical practice",
+          "period": "2 years",
+          "points": [
+            "Practical experience in hearing assessment and evaluation.",
+            "Hearing-aid selection, fitting, programming and fine-tuning.",
+            "Device troubleshooting, user guidance and client counselling."
+          ]
+        }
+      ],
+      "volunteering": [],
+      "email": "ak9478010797@gmail.com",
+      "phone": "+91 9478010797",
+      "photo": "/media/team/abhishek-kumar.jpg"
+    }
+  ],
+  "conditions": [
+    {
+      "slug": "autism-spectrum-disorder",
+      "title": "Autism Spectrum Disorder (ASD) — Support & Therapy",
+      "shortTitle": "Autism (ASD)",
+      "disciplines": [
+        "occupational-therapy",
+        "speech-language"
+      ],
+      "ageGroup": "child",
+      "summary": "Early, consistent therapy can make a meaningful difference to communication, sensory regulation and everyday independence for children with autism.",
+      "body": [
+        "Autism is a developmental difference that affects how a child communicates, interacts socially, and processes sensory information. Every child is different: some are non-speaking, some have rich language but find social interaction hard, and many experience sensory overload.",
+        "Therapy is most effective when it starts early and is consistent. Occupational therapy focuses on sensory regulation, play and daily-living skills; speech and language therapy builds functional communication — whether that is spoken language, signs, or a communication aid.",
+        "At this practice, both disciplines work together so goals reinforce each other, and parents are coached to carry strategies into everyday routines at home."
+      ],
+      "signs": [
+        "Little or no response to their name by 12 months",
+        "Few or no words by 18–24 months, or loss of language already acquired",
+        "Repetitive movements or intense focus on particular objects",
+        "Difficulty with changes to routine or transitions",
+        "Over- or under-reaction to sounds, textures, lights or touch",
+        "Limited eye contact, pointing, or shared attention"
+      ],
+      "approach": [
+        "A joint occupational therapy and speech-language assessment to establish a baseline",
+        "Individualised goals agreed with the family, reviewed regularly",
+        "Sensory regulation and play-based skill building",
+        "Functional communication work, including parent coaching and home programmes"
+      ],
+      "faq": [
+        {
+          "question": "At what age should therapy start?",
+          "answer": "As early as concerns arise. Early intervention takes advantage of the brain's fastest period of development, so it is never too early to have a child assessed."
+        },
+        {
+          "question": "Can therapy be delivered online?",
+          "answer": "Much of it can. Early-intervention and language work is often delivered effectively online with a parent present, while sensory-integration work is usually best in person."
+        },
+        {
+          "question": "Will my child be 'cured'?",
+          "answer": "Therapy does not remove autism, and we do not frame it that way. The goal is to build skills, reduce distress, and improve participation in daily life — on the child's terms."
+        }
+      ],
+      "services": [
+        "paediatric-occupational-therapy",
+        "sensory-integration-therapy",
+        "early-intervention",
+        "social-communication-therapy"
+      ],
+      "professionalIds": [
+        "md-irfan",
+        "abhishek-kumar"
+      ]
+    },
+    {
+      "slug": "adhd",
+      "title": "ADHD — Occupational & Speech Therapy Support",
+      "shortTitle": "ADHD",
+      "disciplines": [
+        "occupational-therapy",
+        "speech-language"
+      ],
+      "ageGroup": "child",
+      "summary": "Practical strategies for attention, organisation, impulse control and the everyday demands of home and school.",
+      "body": [
+        "Children with ADHD often find it hard to sustain attention, organise themselves, wait their turn, or manage the pace of a classroom. This is not a matter of effort or discipline — it reflects how the brain regulates attention and impulses.",
+        "Occupational therapy works on the functional side: routines, organisation, sensory regulation and the skills needed to complete daily tasks. Speech and language therapy supports the language demands that ADHD can complicate, such as following multi-step instructions and organising what to say.",
+        "The most effective plans involve the people around the child. Sessions therefore include practical coaching for parents and, where useful, strategies that can be shared with school."
+      ],
+      "signs": [
+        "Difficulty sustaining attention on tasks, especially ones that are not preferred",
+        "Frequent losing of items, or forgetfulness in daily routines",
+        "Trouble waiting, interrupting, or acting before thinking",
+        "Restlessness, fidgeting, or constant movement",
+        "Difficulty following multi-step instructions",
+        "Handwriting that is rushed, uneven or hard to read"
+      ],
+      "approach": [
+        "Functional assessment of attention, organisation and daily routines",
+        "Sensory and movement strategies that support regulation",
+        "Handwriting and school-readiness work where needed",
+        "Parent coaching and school liaison strategies"
+      ],
+      "faq": [
+        {
+          "question": "Does my child need a diagnosis before therapy?",
+          "answer": "No. Therapy can start from the difficulties you are seeing day to day, and an assessment can help clarify what is going on."
+        },
+        {
+          "question": "Is therapy a replacement for medication?",
+          "answer": "No. Therapy and medication are separate decisions made with the treating doctor. We work on functional skills and strategies, and never advise on medication."
+        },
+        {
+          "question": "How long does support usually last?",
+          "answer": "It varies. Some families need a short block of sessions and a strong home plan; others benefit from ongoing support across school years."
+        }
+      ],
+      "services": [
+        "paediatric-occupational-therapy",
+        "handwriting-and-school-readiness",
+        "sensory-integration-therapy",
+        "social-communication-therapy"
+      ],
+      "professionalIds": [
+        "md-irfan",
+        "abhishek-kumar"
+      ]
+    },
+    {
+      "slug": "cerebral-palsy",
+      "title": "Cerebral Palsy — Therapy for Movement & Daily Life",
+      "shortTitle": "Cerebral Palsy",
+      "disciplines": [
+        "occupational-therapy",
+        "speech-language"
+      ],
+      "ageGroup": "all",
+      "summary": "Supporting movement, self-care, communication and participation for children and adults with cerebral palsy.",
+      "body": [
+        "Cerebral palsy affects movement and posture, and often co-occurs with difficulties in speech, feeding and daily self-care. Its impact varies widely from person to person.",
+        "Occupational therapy focuses on what the person wants and needs to do: dressing, eating, playing, learning, and moving around their environment. Where speech is affected, speech and language therapy builds the most functional communication available — spoken, signed, or aided.",
+        "Progress is measured against practical goals, and equipment or environmental adaptations are recommended where they make daily life genuinely easier."
+      ],
+      "signs": [
+        "Delayed motor milestones such as sitting, rolling or walking",
+        "Stiff or floppy muscle tone, or asymmetric movement",
+        "Difficulty with fine-motor tasks such as grasping or feeding",
+        "Speech that is difficult to understand",
+        "Difficulty with self-care routines such as dressing",
+        "Fatigue or frustration during everyday activities"
+      ],
+      "approach": [
+        "Assessment of movement, self-care and communication goals",
+        "Goal-directed therapy focused on functional daily activities",
+        "Positioning, handling and equipment recommendations",
+        "Communication support, including parent/caregiver training"
+      ],
+      "faq": [
+        {
+          "question": "Can therapy help if cerebral palsy is lifelong?",
+          "answer": "Yes. While cerebral palsy is not curable, therapy meaningfully improves function, comfort, independence and participation at every stage of life."
+        },
+        {
+          "question": "Should therapy be in person or online?",
+          "answer": "Hands-on occupational therapy is usually in person. Communication work and home-programme reviews can work well online."
+        },
+        {
+          "question": "Do you work with schools?",
+          "answer": "Where it helps, yes. Practical strategies can be shared with teachers and support staff so progress carries into the classroom."
+        }
+      ],
+      "services": [
+        "paediatric-occupational-therapy",
+        "speech-sound-therapy",
+        "language-therapy",
+        "home-programme-and-parent-coaching"
+      ],
+      "professionalIds": [
+        "md-irfan",
+        "abhishek-kumar"
+      ]
+    },
+    {
+      "slug": "sensory-processing",
+      "title": "Sensory Processing Difficulties — Sensory Integration Therapy",
+      "shortTitle": "Sensory Processing",
+      "disciplines": [
+        "occupational-therapy"
+      ],
+      "ageGroup": "child",
+      "summary": "For children who find everyday sensations overwhelming, distracting or not enough to feel settled.",
+      "body": [
+        "Some children react strongly to ordinary sensations — loud rooms, certain fabrics, messy play — while others seek out movement and pressure to feel regulated. Both patterns can make everyday life and learning harder than it needs to be.",
+        "Sensory integration therapy helps the nervous system organise and respond to sensory information more effectively. Sessions are playful but purposeful, gradually building tolerance and regulation.",
+        "Therapy is paired with a 'sensory diet': practical strategies woven into home and school routines so regulation improves outside the clinic too."
+      ],
+      "signs": [
+        "Distress or avoidance around noise, textures, or messy play",
+        "Constant movement, crashing, or seeking pressure",
+        "Difficulty settling to sleep or to sit still for meals",
+        "Over- or under-reaction to pain, temperature or touch",
+        "Meltdowns that seem out of proportion to the trigger",
+        "Difficulty with transitions and unfamiliar environments"
+      ],
+      "approach": [
+        "Sensory profile and functional assessment",
+        "Individualised sensory integration sessions",
+        "A practical sensory diet for home and school",
+        "Regular review and adjustment as regulation improves"
+      ],
+      "faq": [
+        {
+          "question": "Is sensory processing a real diagnosis?",
+          "answer": "Sensory processing differences are widely recognised clinically and often occur alongside autism, ADHD and developmental delay. An assessment clarifies your child's specific pattern."
+        },
+        {
+          "question": "Can this be done online?",
+          "answer": "Sensory integration therapy itself is hands-on and in person. Coaching on the home sensory diet can be done online."
+        },
+        {
+          "question": "How soon will we see change?",
+          "answer": "Many families notice small changes within a few weeks, but regulation builds gradually. Consistent home strategies make the biggest difference."
+        }
+      ],
+      "services": [
+        "sensory-integration-therapy",
+        "paediatric-occupational-therapy"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ]
+    },
+    {
+      "slug": "handwriting",
+      "title": "Handwriting Difficulties — Assessment & Therapy",
+      "shortTitle": "Handwriting",
+      "disciplines": [
+        "occupational-therapy"
+      ],
+      "ageGroup": "child",
+      "summary": "When handwriting is slow, painful or hard to read, targeted therapy can make writing easier and schoolwork less stressful.",
+      "body": [
+        "Handwriting is a complex skill: it depends on posture, shoulder and hand strength, fine-motor control, visual perception and attention. When one of these is weak, writing becomes tiring and legibility suffers.",
+        "Occupational therapy breaks the skill down and builds the pieces that are missing — rather than simply asking a child to 'try harder' or practise more.",
+        "Work typically covers grip and posture, letter formation and spacing, speed and endurance, and the organisational skills that support written work in class."
+      ],
+      "signs": [
+        "Writing that is slow, tiring or avoided",
+        "Uneven letter size, spacing or alignment",
+        "An awkward or painful pencil grip",
+        "Letters formed from the bottom up or reversed",
+        "Complaints of hand pain or fatigue during writing",
+        "A large gap between what a child can say and what they can write"
+      ],
+      "approach": [
+        "Assessment of posture, grip, motor control and visual perception",
+        "Targeted strengthening and fine-motor activities",
+        "Letter-formation and spacing practice with feedback",
+        "Classroom accommodations where they help"
+      ],
+      "faq": [
+        {
+          "question": "Is handwriting still important in a digital age?",
+          "answer": "Yes. Handwriting underpins spelling, note-taking and written expression at school, and remains a core daily task for years."
+        },
+        {
+          "question": "My child just needs more practice — is that enough?",
+          "answer": "Practice helps once the underlying skills are in place. If posture, grip or motor control is the limiting factor, more practice alone often increases frustration."
+        },
+        {
+          "question": "How long before handwriting improves?",
+          "answer": "Most children show clear change within 8–12 weeks of consistent work, with home practice making a real difference."
+        }
+      ],
+      "services": [
+        "handwriting-and-school-readiness",
+        "occupational-therapy-assessment",
+        "home-programme-and-parent-coaching"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ]
+    },
+    {
+      "slug": "developmental-delay",
+      "title": "Developmental Delay — Early Intervention",
+      "shortTitle": "Developmental Delay",
+      "disciplines": [
+        "occupational-therapy",
+        "speech-language"
+      ],
+      "ageGroup": "child",
+      "summary": "When a child is behind on milestones, early therapy can change the trajectory.",
+      "body": [
+        "Developmental delay means a child is not meeting expected milestones in one or more areas — movement, speech, play, self-care or learning. Early identification matters, because the first years are when intervention has the greatest effect.",
+        "Therapy targets the specific skills that are behind, using play and daily routines as the vehicle. Occupational therapy addresses motor, sensory and self-care skills; speech and language therapy addresses communication.",
+        "Parents are central to the plan. Much of the progress happens at home, so sessions include coaching and a clear home programme."
+      ],
+      "signs": [
+        "Not sitting, crawling or walking within the expected age range",
+        "Few or no words by 18–24 months",
+        "Difficulty with feeding, dressing or self-care for their age",
+        "Limited pretend play or interest in other children",
+        "Difficulty following simple instructions",
+        "Loss of skills the child previously had"
+      ],
+      "approach": [
+        "Developmental assessment across motor, sensory, communication and self-care domains",
+        "Prioritised goals set with the family",
+        "Play-based therapy that builds specific skills",
+        "Parent coaching and regular progress review"
+      ],
+      "faq": [
+        {
+          "question": "Is my child just a late bloomer?",
+          "answer": "Some children do catch up on their own. An assessment is the only reliable way to tell the difference, and early input is never wasted."
+        },
+        {
+          "question": "Which therapy does my child need first?",
+          "answer": "That depends on the assessment. Many children benefit from more than one discipline, and the team coordinates goals so they reinforce each other."
+        },
+        {
+          "question": "Can we start online?",
+          "answer": "Yes, particularly for communication and home-programme work. Motor and sensory work is usually best assessed in person first."
+        }
+      ],
+      "services": [
+        "occupational-therapy-assessment",
+        "early-intervention",
+        "paediatric-occupational-therapy",
+        "home-programme-and-parent-coaching"
+      ],
+      "professionalIds": [
+        "md-irfan",
+        "abhishek-kumar"
+      ]
+    },
+    {
+      "slug": "down-syndrome",
+      "title": "Down Syndrome — Speech & Occupational Therapy",
+      "shortTitle": "Down Syndrome",
+      "disciplines": [
+        "speech-language",
+        "occupational-therapy"
+      ],
+      "ageGroup": "child",
+      "summary": "Building communication, motor skills and independence with steady, consistent therapy.",
+      "body": [
+        "Children with Down syndrome develop skills at their own pace and benefit enormously from early, consistent therapy. Communication and independence are usually the highest priorities.",
+        "Speech and language therapy builds vocabulary, sentence formation and clarity of speech, often supported by signs or visual supports in the early years. Occupational therapy develops fine-motor skills, self-care and school readiness.",
+        "Progress is steady rather than fast, and consistency — at the clinic and at home — is what makes the difference."
+      ],
+      "signs": [
+        "Delayed first words or limited vocabulary for age",
+        "Speech that is difficult to understand",
+        "Difficulty with fine-motor tasks such as fastening buttons",
+        "Delayed self-care skills such as feeding or dressing",
+        "Difficulty with attention and following instructions",
+        "Low muscle tone affecting posture and movement"
+      ],
+      "approach": [
+        "Assessment of communication, motor and self-care skills",
+        "Individualised, pace-appropriate therapy goals",
+        "Visual supports and signing where they help communication",
+        "Parent coaching for consistent home practice"
+      ],
+      "faq": [
+        {
+          "question": "Is there an age limit for starting therapy?",
+          "answer": "No. Therapy is valuable at every age. Earlier is generally better, but meaningful progress happens whenever you start."
+        },
+        {
+          "question": "Will my child learn to talk?",
+          "answer": "Many children do develop useful spoken language; others communicate best with a combination of speech, signs and visual supports. The goal is functional communication."
+        },
+        {
+          "question": "How often should sessions be?",
+          "answer": "Usually once or twice a week, reviewed regularly. Consistency matters more than intensity."
+        }
+      ],
+      "services": [
+        "early-intervention",
+        "language-therapy",
+        "paediatric-occupational-therapy"
+      ],
+      "professionalIds": [
+        "abhishek-kumar",
+        "md-irfan"
+      ]
+    },
+    {
+      "slug": "speech-language-delay",
+      "title": "Speech & Language Delay — When Should You Worry?",
+      "shortTitle": "Speech & Language Delay",
+      "disciplines": [
+        "speech-language"
+      ],
+      "ageGroup": "child",
+      "summary": "Most children follow a predictable path to talking. When they don't, early assessment and therapy help.",
+      "body": [
+        "A speech and language delay means a child is developing communication skills more slowly than expected for their age — fewer words, limited understanding, or difficulty putting sentences together.",
+        "Delays can be caused by many things, from hearing difficulties to developmental conditions, and sometimes there is no clear cause at all. An assessment identifies what is behind the delay and what to do about it.",
+        "Early intervention works. Therapy builds communication through play and daily routines, and coaches parents on the small, frequent interactions that drive progress at this age."
+      ],
+      "signs": [
+        "No babbling or gesture by 12 months",
+        "No words by 18 months, or no two-word phrases by 24 months",
+        "Difficulty understanding simple instructions",
+        "Speech that is much harder to understand than peers'",
+        "Frustration or behaviour changes when trying to communicate",
+        "Loss of words or skills the child previously had"
+      ],
+      "approach": [
+        "Speech, language and hearing assessment",
+        "Individualised communication goals",
+        "Play-based therapy with parent coaching",
+        "Regular review and home programme updates"
+      ],
+      "faq": [
+        {
+          "question": "Should I wait until my child is older?",
+          "answer": "Waiting is the one thing we would not recommend. If you have concerns, an assessment either reassures you or gets support started early."
+        },
+        {
+          "question": "Does my child need a hearing test?",
+          "answer": "Yes — hearing is one of the first things to rule out, because undetected hearing loss is a common and treatable cause of speech delay."
+        },
+        {
+          "question": "How quickly can we get started?",
+          "answer": "Send a request and the practice will confirm a time, usually within a few working days."
+        }
+      ],
+      "services": [
+        "speech-and-language-assessment",
+        "early-intervention",
+        "language-therapy",
+        "hearing-assessment"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ]
+    },
+    {
+      "slug": "speech-sound-disorder",
+      "title": "Speech Sound & Articulation Difficulties",
+      "shortTitle": "Speech Sounds",
+      "disciplines": [
+        "speech-language"
+      ],
+      "ageGroup": "child",
+      "summary": "When sounds are missed, swapped or distorted, speech can be hard to understand — and therapy fixes it.",
+      "body": [
+        "Speech sound difficulties include substituting one sound for another, leaving sounds out, or distorting them. Some patterns are normal at certain ages and resolve on their own; others persist and need therapy.",
+        "An assessment identifies which sounds are affected and whether the pattern is age-appropriate. Therapy then targets those sounds systematically, moving from isolated sounds to words, sentences and conversation.",
+        "Short daily practice at home is a major part of progress, and families are given a simple routine to follow."
+      ],
+      "signs": [
+        "Speech that unfamiliar listeners cannot understand",
+        "Specific sounds consistently missing or swapped",
+        "A lisp or distorted 's', 'z', 'sh' or 'ch'",
+        "Speech that improved and then plateaued",
+        "Avoidance of speaking or frustration when misunderstood",
+        "Difficulty being understood by teachers or peers"
+      ],
+      "approach": [
+        "Speech sound assessment and error-pattern analysis",
+        "Systematic therapy from sounds to conversation",
+        "Daily home practice routine for families",
+        "Regular review of generalisation into everyday speech"
+      ],
+      "faq": [
+        {
+          "question": "Is it just baby talk that will pass?",
+          "answer": "Some patterns do resolve with age. Others do not, and the only way to know is an assessment of which sounds are affected at your child's age."
+        },
+        {
+          "question": "How long does therapy take?",
+          "answer": "It depends on the number and type of sounds. Many children resolve a single sound in a few months of consistent practice."
+        },
+        {
+          "question": "Can this be done online?",
+          "answer": "Yes, articulation therapy works well online with a parent nearby to support practice."
+        }
+      ],
+      "services": [
+        "speech-sound-therapy",
+        "speech-and-language-assessment"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ]
+    },
+    {
+      "slug": "stuttering",
+      "title": "Stuttering / Fluency — Therapy for Children & Adults",
+      "shortTitle": "Stuttering",
+      "disciplines": [
+        "speech-language"
+      ],
+      "ageGroup": "all",
+      "summary": "Practical, evidence-informed support for smoother speech and greater confidence.",
+      "body": [
+        "Stuttering affects the flow of speech — repetitions, prolongations and blocks. It varies day to day and can be affected by stress, fatigue and situation.",
+        "Therapy combines fluency techniques with work on confidence and communication, because the impact of stuttering is often as much social as it is physical.",
+        "For young children, early intervention can prevent a pattern from becoming established. For adults, therapy focuses on control, acceptance and real-world communication."
+      ],
+      "signs": [
+        "Repetition of sounds, syllables or words",
+        "Stretching or prolonging sounds",
+        "Blocks where no sound comes out",
+        "Physical tension in the face or neck while speaking",
+        "Avoidance of certain words, situations or speaking at all",
+        "Anxiety about speaking in class, at work or on the phone"
+      ],
+      "approach": [
+        "Assessment of fluency pattern, severity and impact",
+        "Fluency techniques matched to age and goals",
+        "Confidence and communication work",
+        "Practice strategies for real-world situations"
+      ],
+      "faq": [
+        {
+          "question": "Can stuttering be cured?",
+          "answer": "Many children respond very well to early therapy; adults can achieve significant, lasting improvement. We are honest about what to expect rather than promising a cure."
+        },
+        {
+          "question": "Is online therapy effective for stuttering?",
+          "answer": "Yes. Fluency therapy is well suited to video sessions, and many adults prefer them."
+        },
+        {
+          "question": "At what age should we start?",
+          "answer": "If stuttering persists beyond about six months, runs in the family, or is causing distress, get an assessment early."
+        }
+      ],
+      "services": [
+        "fluency-therapy",
+        "speech-and-language-assessment"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ]
+    },
+    {
+      "slug": "hearing-loss",
+      "title": "Hearing Loss — Assessment, Hearing Aids & Counselling",
+      "shortTitle": "Hearing Loss",
+      "disciplines": [
+        "audiology"
+      ],
+      "ageGroup": "all",
+      "summary": "From hearing assessment to a properly fitted, properly tuned hearing aid.",
+      "body": [
+        "Hearing loss can affect communication, learning and confidence, and it often develops gradually enough that it goes unnoticed. It is one of the first things to check when speech or learning is delayed.",
+        "Audiology services cover basic hearing assessment and evaluation, hearing-aid selection and fitting, and programming and fine-tuning after fitting.",
+        "A hearing aid only helps if it is comfortable, correctly tuned and actually worn. Counselling and follow-up are therefore treated as part of the service, not an afterthought."
+      ],
+      "signs": [
+        "Frequently asking people to repeat themselves",
+        "Difficulty following conversation in background noise",
+        "Turning the television or phone volume up high",
+        "Speech or language delay in a young child",
+        "Ringing or discomfort in the ears",
+        "Withdrawal from conversations or social situations"
+      ],
+      "approach": [
+        "Basic audiological assessment and hearing evaluation",
+        "Hearing-aid selection matched to needs and budget",
+        "Fitting, programming and fine-tuning",
+        "Counselling, care instructions and follow-up"
+      ],
+      "faq": [
+        {
+          "question": "Do you sell hearing aids?",
+          "answer": "This practice provides assessment, selection guidance, fitting and programming. Device pricing and supply are confirmed at the appointment."
+        },
+        {
+          "question": "How long does a hearing-aid fitting take?",
+          "answer": "The fitting appointment is about an hour, with a follow-up tuning session usually within a few weeks."
+        },
+        {
+          "question": "Can my child be assessed?",
+          "answer": "Yes. Hearing assessment is appropriate for children and is an important part of investigating speech and language delay."
+        }
+      ],
+      "services": [
+        "hearing-assessment",
+        "hearing-aid-fitting",
+        "hearing-aid-programming",
+        "hearing-aid-counselling"
+      ],
+      "professionalIds": [
+        "abhishek-kumar"
+      ]
+    },
+    {
+      "slug": "stroke",
+      "title": "Stroke Rehabilitation — Occupational Therapy",
+      "shortTitle": "Stroke Rehabilitation",
+      "disciplines": [
+        "occupational-therapy"
+      ],
+      "ageGroup": "adult",
+      "summary": "Rebuilding independence in daily life after a stroke, one practical goal at a time.",
+      "body": [
+        "After a stroke, ordinary tasks — dressing, eating, washing, moving safely around the home — can become difficult. Occupational therapy addresses exactly those tasks.",
+        "Therapy is goal-directed: what does the person most want to get back to? Sessions then build the strength, coordination and strategies needed to get there, and adapt the environment where that helps.",
+        "Caregivers are trained too, because recovery continues between sessions and at home."
+      ],
+      "signs": [
+        "Weakness or reduced control on one side of the body",
+        "Difficulty with dressing, eating or personal care",
+        "Reduced coordination or hand function",
+        "Difficulty with attention, planning or memory",
+        "Fatigue during everyday tasks",
+        "Reduced confidence or low mood after the stroke"
+      ],
+      "approach": [
+        "Functional assessment of daily activities and home environment",
+        "Goal-directed therapy for the tasks that matter most",
+        "Adaptation strategies and equipment recommendations",
+        "Caregiver training and home programme"
+      ],
+      "faq": [
+        {
+          "question": "How soon after a stroke should therapy start?",
+          "answer": "As soon as it is medically safe. Early rehabilitation is linked to better functional outcomes."
+        },
+        {
+          "question": "Can therapy be done at home?",
+          "answer": "Yes — home-based occupational therapy is often the most practical setting, because that is where the tasks actually happen."
+        },
+        {
+          "question": "How long does rehabilitation take?",
+          "answer": "It varies widely. Many people continue to make gains for months and even years with consistent input."
+        }
+      ],
+      "services": [
+        "adult-neuro-rehabilitation",
+        "occupational-therapy-assessment",
+        "home-programme-and-parent-coaching"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ]
+    },
+    {
+      "slug": "parkinsons-disease",
+      "title": "Parkinson's Disease — Occupational Therapy Support",
+      "shortTitle": "Parkinson's Disease",
+      "disciplines": [
+        "occupational-therapy"
+      ],
+      "ageGroup": "adult",
+      "summary": "Practical strategies to keep daily life manageable as Parkinson's progresses.",
+      "body": [
+        "Parkinson's affects movement, but its impact is felt most in daily routines — dressing, eating, writing, and moving safely around the home.",
+        "Occupational therapy works on those routines: breaking tasks down, building strategies that reduce effort, and adapting the environment so independence is maintained for as long as possible.",
+        "Because Parkinson's changes over time, therapy is reviewed regularly and adjusted as needs shift."
+      ],
+      "signs": [
+        "Slowness of movement or difficulty starting movements",
+        "Tremor affecting writing, eating or dressing",
+        "Small, cramped handwriting",
+        "Difficulty with buttons, zips or cutlery",
+        "Balance problems and fear of falling",
+        "Reduced energy for daily tasks"
+      ],
+      "approach": [
+        "Functional assessment of daily routines and safety",
+        "Strategies to simplify and sequence tasks",
+        "Home adaptations and equipment recommendations",
+        "Regular review as needs change over time"
+      ],
+      "faq": [
+        {
+          "question": "Is therapy useful in the early stages?",
+          "answer": "Yes. Early strategies help maintain independence and establish habits that make later stages easier."
+        },
+        {
+          "question": "Can therapy help with handwriting?",
+          "answer": "Yes. Micrographia often responds to specific occupational therapy strategies and practice."
+        },
+        {
+          "question": "Do you work alongside a neurologist?",
+          "answer": "Occupational therapy complements medical management. We work on function and daily life, not medication."
+        }
+      ],
+      "services": [
+        "adult-neuro-rehabilitation",
+        "occupational-therapy-assessment",
+        "home-programme-and-parent-coaching"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ]
+    },
+    {
+      "slug": "dementia",
+      "title": "Dementia & Cognitive Decline — Functional Support",
+      "shortTitle": "Dementia",
+      "disciplines": [
+        "occupational-therapy"
+      ],
+      "ageGroup": "adult",
+      "summary": "Maintaining function, safety and dignity through practical, everyday strategies.",
+      "body": [
+        "Dementia affects memory, thinking and the ability to carry out daily tasks. Occupational therapy focuses on keeping daily life working for as long as possible.",
+        "Sessions identify the routines that are becoming difficult and put practical strategies in place — simplifying tasks, using visual cues, and making the home safer.",
+        "Family and caregivers are central to the plan, and much of the work is coaching them on how to support independence without taking over."
+      ],
+      "signs": [
+        "Forgetting recent events or repeating questions",
+        "Difficulty with familiar tasks such as cooking or paying bills",
+        "Getting lost in familiar places",
+        "Problems with sequencing everyday activities",
+        "Changes in mood, judgement or behaviour",
+        "Increased risk of falls or household accidents"
+      ],
+      "approach": [
+        "Functional assessment of daily routines and safety",
+        "Task simplification and environmental adaptation",
+        "Caregiver coaching and routine building",
+        "Review as needs change over time"
+      ],
+      "faq": [
+        {
+          "question": "Can therapy slow dementia?",
+          "answer": "Therapy does not reverse dementia. It maintains function, reduces risk, and improves quality of life for the person and their family."
+        },
+        {
+          "question": "Is this mostly for the caregiver?",
+          "answer": "A large part of the work is coaching caregivers, because consistent support at home is what sustains function."
+        },
+        {
+          "question": "Can sessions happen at home?",
+          "answer": "Yes — home-based sessions are often the most useful, because that is where the routines take place."
+        }
+      ],
+      "services": [
+        "adult-neuro-rehabilitation",
+        "occupational-therapy-assessment"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ]
+    },
+    {
+      "slug": "guillain-barre",
+      "title": "Guillain–Barré Syndrome (GBS) — Rehabilitation",
+      "shortTitle": "Guillain–Barré Syndrome",
+      "disciplines": [
+        "occupational-therapy"
+      ],
+      "ageGroup": "adult",
+      "summary": "Rebuilding strength, function and independence during and after recovery from GBS.",
+      "body": [
+        "Guillain–Barré syndrome causes rapid-onset weakness that can affect movement, self-care and, at its most severe, breathing. Recovery is usually gradual and can take months.",
+        "Occupational therapy supports that recovery: rebuilding hand function and strength, retraining daily tasks, managing fatigue, and adapting routines during the period of greatest weakness.",
+        "Because recovery is long, therapy focuses on steady, measurable gains and on keeping the person as independent as possible at every stage."
+      ],
+      "signs": [
+        "Weakness or tingling starting in the feet and legs",
+        "Difficulty walking, standing or climbing stairs",
+        "Reduced hand grip or fine-motor control",
+        "Difficulty with dressing, eating or personal care",
+        "Profound fatigue during recovery",
+        "Reduced independence in daily routines"
+      ],
+      "approach": [
+        "Functional assessment of strength and daily activities",
+        "Graded retraining of daily tasks as strength returns",
+        "Fatigue management and energy conservation strategies",
+        "Home adaptation and caregiver training"
+      ],
+      "faq": [
+        {
+          "question": "How long does recovery take?",
+          "answer": "Recovery varies from weeks to well over a year. Consistent rehabilitation is a major factor in functional outcomes."
+        },
+        {
+          "question": "Can therapy start while I am still weak?",
+          "answer": "Yes. Therapy is graded to current ability, focusing on what is possible now while protecting against fatigue."
+        },
+        {
+          "question": "Will I get back to normal?",
+          "answer": "Many people recover most function, though timelines differ. Therapy aims to maximise independence and quality of life throughout."
+        }
+      ],
+      "services": [
+        "adult-neuro-rehabilitation",
+        "occupational-therapy-assessment",
+        "home-programme-and-parent-coaching"
+      ],
+      "professionalIds": [
+        "md-irfan"
+      ]
+    }
+  ],
+  "disciplines": [
+    {
+      "id": "occupational-therapy",
+      "title": "Occupational Therapy",
+      "short": "Occupational Therapy",
+      "tagline": "Building the everyday skills that make independence possible.",
+      "description": [
+        "Occupational therapy helps children and adults do the everyday things that matter — dressing, eating, writing, playing, working — when a condition, injury or developmental difference makes those things hard.",
+        "Sessions are practical and goal-led: fine-motor and handwriting work, sensory regulation, school readiness, and activities-of-daily-living training, with clear home programmes for families."
+      ]
+    },
+    {
+      "id": "speech-language",
+      "title": "Speech & Language Therapy",
+      "short": "Speech & Language",
+      "tagline": "Helping every child find their voice, at their own pace.",
+      "description": [
+        "Speech and language therapy supports children who are late to talk, hard to understand, or struggling with understanding and using language in everyday situations.",
+        "Work spans early intervention, speech sounds and articulation, receptive and expressive language, fluency, and social communication — with parents coached to carry practice into daily routines."
+      ]
+    },
+    {
+      "id": "audiology",
+      "title": "Audiology & Hearing Care",
+      "short": "Audiology",
+      "tagline": "Clear hearing, properly assessed and properly fitted.",
+      "description": [
+        "Audiology services cover hearing assessment and evaluation, hearing-aid selection and fitting, and device programming and fine-tuning.",
+        "The focus is on practical outcomes: a hearing aid that is comfortable, correctly tuned, and understood — with ongoing guidance for the client and their family."
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What conditions do you work with?",
+      "answer": "Occupational therapy covers paediatric and adult needs including cerebral palsy, autism, ADHD, sensory processing, handwriting, developmental delay, stroke, Parkinson's, dementia and Guillain–Barré syndrome. Speech and language therapy covers speech and language delay, speech sounds, stuttering, and social communication. Audiology covers hearing assessment and hearing-aid fitting and programming."
+    },
+    {
+      "question": "Do you offer online sessions?",
+      "answer": "Yes. Many services are available as secure video sessions, and some can be delivered by phone. Sensory integration and audiological assessment are in person, since they need hands-on evaluation."
+    },
+    {
+      "question": "Do you offer home visits?",
+      "answer": "Home visits are available across Delhi and the surrounding NCR area for services where the home environment is the right setting — particularly adult rehabilitation and early intervention. Mention this when you send your request."
+    },
+    {
+      "question": "How do I book an appointment?",
+      "answer": "Send a request through the booking form, or message the practice directly on WhatsApp or by phone. The practice confirms your slot and shares the details before the session."
+    },
+    {
+      "question": "What happens in the first session?",
+      "answer": "The first appointment is usually an assessment. The therapist will take a history, observe and assess the areas of concern, and explain what they found. You will leave with clear next steps and, where relevant, a home programme."
+    },
+    {
+      "question": "How long is a session?",
+      "answer": "Most therapy sessions are 45 minutes. Assessments are around 60 minutes, and review or coaching sessions are 30 minutes."
+    },
+    {
+      "question": "How much do sessions cost?",
+      "answer": "Fees are listed on the Pricing page and shown against each service. The practice confirms the final amount when your appointment is scheduled."
+    },
+    {
+      "question": "Is this site able to take payments?",
+      "answer": "No. This website does not process payments or store your information. Payment is arranged directly with the practice."
+    },
+    {
+      "question": "Will my information be kept private?",
+      "answer": "Yes. When you send a request, your details go directly to the practice by WhatsApp or email. This website does not store them. Read the Privacy page for details."
+    },
+    {
+      "question": "What if this is an emergency?",
+      "answer": "This practice does not provide emergency care. If you or someone else is in immediate danger, contact local emergency services or a crisis helpline right away."
+    }
+  ],
+  "blog": [
+    {
+      "slug": "signs-your-child-may-benefit-from-occupational-therapy",
+      "title": "Signs your child may benefit from occupational therapy",
+      "description": "A practical checklist of the everyday difficulties that suggest a paediatric occupational therapy assessment is worth considering.",
+      "date": "2026-09-12",
+      "readingMinutes": 5,
+      "category": "Occupational Therapy",
+      "tags": [
+        "paediatric",
+        "assessment",
+        "early intervention"
+      ],
+      "authorId": "md-irfan",
+      "related": [
+        "developmental-delay",
+        "handwriting",
+        "sensory-processing"
+      ],
+      "sections": [
+        {
+          "paragraphs": [
+            "Occupational therapy is about the everyday things a child needs to do — dressing, eating, writing, playing and learning. When those things are consistently harder than they should be, an assessment can explain why.",
+            "Parents often sense something is off long before anyone else. This article lists the difficulties that most often prompt a referral, so you can decide whether to seek advice."
+          ]
+        },
+        {
+          "heading": "Fine motor and handwriting signs",
+          "bullets": [
+            "Avoids drawing, colouring or writing, or tires very quickly doing it",
+            "Holds a pencil in an awkward or painful grip",
+            "Letters are uneven, spaced oddly, or frequently reversed",
+            "Struggles with buttons, zips, cutlery or scissors"
+          ],
+          "paragraphs": [
+            "These difficulties usually point to underlying issues with hand strength, coordination or visual-motor control rather than a lack of effort."
+          ]
+        },
+        {
+          "heading": "Sensory and regulation signs",
+          "bullets": [
+            "Strong reactions to ordinary sounds, textures or labels in clothing",
+            "Constant movement, crashing into things, or difficulty sitting at a meal",
+            "Meltdowns that seem out of proportion to what triggered them",
+            "Difficulty settling to sleep or transitioning between activities"
+          ]
+        },
+        {
+          "heading": "Daily living and play signs",
+          "bullets": [
+            "Noticeably behind peers in self-care skills such as dressing",
+            "Finds it hard to copy actions or follow a sequence of steps",
+            "Play is repetitive, or your child struggles to join in with others",
+            "Easily frustrated when a task does not work the first time"
+          ]
+        },
+        {
+          "heading": "What to do next",
+          "paragraphs": [
+            "If several of these feel familiar, the sensible next step is an assessment. It is not a commitment to long-term therapy — often it simply gives you a clear picture and a few practical strategies you can start using at home.",
+            "Bring what you have noticed in everyday life. Parent observations are one of the most useful things a therapist can hear."
+          ]
+        },
+        {
+          "quote": "Assessment is not about labelling a child. It is about understanding what is hard, and what will make it easier."
+        }
+      ]
+    },
+    {
+      "slug": "speech-and-language-milestones",
+      "title": "Speech and language milestones: what to expect from 1 to 5 years",
+      "description": "A parent-friendly guide to the communication milestones that matter, and the signs that warrant an early speech and language assessment.",
+      "date": "2026-09-20",
+      "readingMinutes": 6,
+      "category": "Speech & Language",
+      "tags": [
+        "milestones",
+        "early intervention",
+        "speech delay"
+      ],
+      "authorId": "abhishek-kumar",
+      "related": [
+        "speech-language-delay",
+        "speech-sound-disorder",
+        "stuttering"
+      ],
+      "sections": [
+        {
+          "paragraphs": [
+            "Milestones are a guide, not a test. Children develop at different rates, and a slightly later start is often nothing to worry about. But some patterns are worth acting on early, because the first years are when intervention has the greatest effect."
+          ]
+        },
+        {
+          "heading": "Around 12–18 months",
+          "bullets": [
+            "Babbling with a range of sounds, and using gestures such as pointing",
+            "Responding to their name and to simple words like 'no'",
+            "First words usually appear between 12 and 18 months"
+          ]
+        },
+        {
+          "heading": "Around 2 years",
+          "bullets": [
+            "Using around 50 words and beginning to join two words together",
+            "Following simple two-step instructions",
+            "Being understood by familiar adults about half the time"
+          ]
+        },
+        {
+          "heading": "Around 3 years",
+          "bullets": [
+            "Short sentences of three or four words",
+            "Asking simple questions",
+            "Being understood by unfamiliar adults most of the time"
+          ]
+        },
+        {
+          "heading": "Around 4–5 years",
+          "bullets": [
+            "Telling simple stories and holding a conversation",
+            "Speech that is clear to almost everyone",
+            "Following longer instructions and understanding why/what/where questions"
+          ]
+        },
+        {
+          "heading": "When to seek an assessment",
+          "bullets": [
+            "No words by 18 months, or no two-word phrases by 24 months",
+            "Speech that is much harder to understand than other children the same age",
+            "Difficulty understanding instructions, or seeming not to hear",
+            "Loss of words or skills your child previously had",
+            "Frustration, withdrawal or behaviour changes around communication"
+          ],
+          "paragraphs": [
+            "Hearing should always be checked as part of this. Undetected hearing loss is a common and treatable cause of speech delay."
+          ]
+        },
+        {
+          "heading": "The good news",
+          "paragraphs": [
+            "Early intervention works. Therapy at this age looks a lot like play, and much of the progress happens at home with the small interactions you already have every day."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sensory-processing-why-meltdowns-happen",
+      "title": "Sensory processing: why the sock seam causes a meltdown",
+      "description": "Understanding sensory processing differences, and what actually helps a child who is overwhelmed by everyday sensations.",
+      "date": "2026-10-02",
+      "readingMinutes": 5,
+      "category": "Occupational Therapy",
+      "tags": [
+        "sensory",
+        "regulation",
+        "autism"
+      ],
+      "authorId": "md-irfan",
+      "related": [
+        "sensory-processing",
+        "autism-spectrum-disorder",
+        "adhd"
+      ],
+      "sections": [
+        {
+          "paragraphs": [
+            "To most of us, a sock seam is nothing. To a child with sensory processing differences, it can be genuinely unbearable. The sensation is not exaggerated — the nervous system is registering it differently.",
+            "Sensory processing is how the brain takes in and organises information from touch, movement, sound, sight and body awareness. When that process is inefficient, ordinary environments can feel overwhelming — or underwhelming, which is why some children constantly seek movement."
+          ]
+        },
+        {
+          "heading": "Two patterns, same underlying issue",
+          "bullets": [
+            "Over-responsive: avoids noise, textures, messy play; startles easily",
+            "Under-responsive: seems not to notice sensations, or seeks intense input",
+            "Seeking: constantly moving, crashing, chewing, or touching everything",
+            "Fluctuating: regulated in one environment and overwhelmed in another"
+          ]
+        },
+        {
+          "heading": "What actually helps",
+          "bullets": [
+            "Identify the specific triggers rather than removing all stimulation",
+            "Build movement and pressure breaks into the day, before dysregulation peaks",
+            "Give advance warning of transitions and changes",
+            "Reduce competing sensory input at demanding times such as homework"
+          ],
+          "paragraphs": [
+            "This is the idea behind a 'sensory diet' — a planned pattern of sensory input across the day that keeps regulation steadier."
+          ]
+        },
+        {
+          "heading": "Where therapy fits",
+          "paragraphs": [
+            "An occupational therapist assesses your child's sensory profile and designs both clinic sessions and a home sensory diet. The goal is not to make a child tolerate everything, but to give them — and you — reliable ways to stay regulated."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hearing-loss-in-children-early-signs",
+      "title": "Hearing loss in children: early signs parents often miss",
+      "description": "Hearing loss can be subtle and easy to miss. Here are the signs that should prompt a hearing assessment.",
+      "date": "2026-10-14",
+      "readingMinutes": 4,
+      "category": "Audiology",
+      "tags": [
+        "hearing",
+        "assessment",
+        "early intervention"
+      ],
+      "authorId": "abhishek-kumar",
+      "related": [
+        "hearing-loss",
+        "speech-language-delay"
+      ],
+      "sections": [
+        {
+          "paragraphs": [
+            "Hearing loss in children is often gradual, and children adapt so quietly that parents rarely notice the hearing itself — they notice behaviour instead.",
+            "Because hearing underpins speech, language and learning, it is one of the first things to check whenever communication is delayed."
+          ]
+        },
+        {
+          "heading": "Signs to watch for",
+          "bullets": [
+            "Turning the television or device volume up higher than others need",
+            "Frequently asking for things to be repeated",
+            "Watching faces closely, or relying on lip-reading without realising it",
+            "Speech that is unclear, or missing particular sounds",
+            "Struggling in group settings but managing one-to-one",
+            "Withdrawal, inattention or tiredness at the end of the school day"
+          ]
+        },
+        {
+          "heading": "Why early matters",
+          "paragraphs": [
+            "The first years are critical for language development. When hearing is addressed early, the impact on speech and learning is far smaller."
+          ]
+        },
+        {
+          "heading": "What an assessment involves",
+          "paragraphs": [
+            "A basic audiological assessment evaluates hearing across the speech range. Results are explained in plain language, with clear recommendations — whether that is monitoring, medical referral, or a hearing-aid fitting."
+          ]
+        }
+      ]
+    }
+  ],
+  "locations": [
+    {
+      "slug": "new-delhi",
+      "name": "TheraViva — New Delhi",
+      "city": "New Delhi",
+      "state": "Delhi",
+      "addressLines": [
+        "Clinic address to be confirmed"
+      ],
+      "pincode": "110001",
+      "hours": [
+        "Monday – Friday: 9:00 am – 7:00 pm",
+        "Saturday: 9:00 am – 5:00 pm",
+        "Sunday: By appointment"
+      ],
+      "openingHoursIso": [
+        "Mo-Fr 09:00-19:00",
+        "Sa 09:00-17:00"
+      ],
+      "phone": "+91 7838696558",
+      "mapQuery": "New Delhi, India",
+      "serviceArea": [
+        "New Delhi",
+        "South Delhi",
+        "Central Delhi",
+        "Noida",
+        "Gurugram",
+        "Ghaziabad"
+      ],
+      "primary": true
+    }
+  ],
+  "pricing": [
+    {
+      "id": "starter-block",
+      "name": "Starter block",
+      "sessions": 6,
+      "amountInr": 5100,
+      "description": "Six therapy sessions for families starting a programme, with a review at the end."
+    },
+    {
+      "id": "therapy-block",
+      "name": "Therapy block",
+      "sessions": 12,
+      "amountInr": 9600,
+      "description": "Twelve sessions with ongoing progress reviews — the most common therapy plan.",
+      "featured": true
+    },
+    {
+      "id": "assessment-plus-review",
+      "name": "Assessment + review",
+      "sessions": 2,
+      "amountInr": 1600,
+      "description": "A full assessment followed by a review session to check the plan is working."
+    }
+  ]
+}

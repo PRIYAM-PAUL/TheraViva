@@ -32,7 +32,13 @@ export async function generateMetadata({
 }: PageProps<"/blog/[slug]">) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
-  if (!post) return buildMetadata({ title: "Not found", description: "", path: "/blog" });
+  if (!post)
+    return buildMetadata({
+      title: "Not found",
+      description: "",
+      path: "/blog",
+      noIndex: true,
+    });
 
   return buildMetadata({
     title: post.title,

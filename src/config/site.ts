@@ -12,6 +12,16 @@ import type { Option } from "@/types";
 export const DEFAULT_LOCALE = "en-IN";
 export const DEFAULT_CURRENCY = "INR";
 
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+
+if (!configuredSiteUrl && process.env.NODE_ENV === "production") {
+  // Without this, every canonical, Open Graph URL, sitemap entry and JSON-LD
+  // @id would be published as http://localhost:3000.
+  console.warn(
+    "[theraviva] NEXT_PUBLIC_SITE_URL is not set — canonical URLs, Open Graph and JSON-LD will fall back to http://localhost:3000.",
+  );
+}
+
 export interface NavItem {
   label: string;
   href: string;
@@ -45,7 +55,7 @@ export const siteConfig: SiteConfig = {
   tagline: "Occupational therapy, speech therapy & audiology in Delhi",
   description:
     "TheraViva is a Delhi-based occupational therapy, speech-and-language and audiology practice. Assessment-led therapy for children and adults, in clinic, at home and online.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: configuredSiteUrl ?? "http://localhost:3000",
   contact: {
     email: "78609910mdirfan@gmail.com",
     phone: "+91 7838696558",

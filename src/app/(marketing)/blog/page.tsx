@@ -28,6 +28,7 @@ export default function BlogPage() {
           <div className="space-y-6">
             <Breadcrumbs items={crumbs} />
             <SectionHeading
+              as="h1"
               align="left"
               eyebrow="Blog"
               title="Guidance you can actually use"

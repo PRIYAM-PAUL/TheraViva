@@ -95,7 +95,7 @@ export function ContactDetailsForm({
         id={`${idPrefix}-notes`}
         label="What would you like help with? (optional)"
         error={errors.notes}
-        description="A sentence or two is plenty. Please avoid sharing sensitive medical records here."
+        description="A sentence or two is plenty. Please avoid sharing sensitive medical records here — this note is sent to the practice through WhatsApp or your email app."
       >
         <Textarea
           name="notes"
@@ -115,7 +115,7 @@ export function ContactDetailsForm({
           aria-invalid={errors.consent ? true : undefined}
           aria-describedby={errors.consent ? consentErrorId : undefined}
           label="I'm happy for the practice to contact me about this request"
-          description="This sends a request — it is not a confirmed appointment. Your details go directly to the practice and are not stored on this website."
+          description="This sends a request — it is not a confirmed appointment. On the next step your details open in WhatsApp or your email app, addressed to the practice; nothing is stored on this website."
         />
         {errors.consent ? (
           <p

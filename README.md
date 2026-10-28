@@ -82,6 +82,24 @@ that still need verification.
 - [`DEPENDENCY_INVENTORY.md`](./DEPENDENCY_INVENTORY.md) — file-by-file status
 - [`AI_CHANGELOG_TEMPLATE.md`](./AI_CHANGELOG_TEMPLATE.md) — change log
 - [`.env.example`](./.env.example) — environment variable placeholders
+- [`backend/README.md`](./backend/README.md) — the Starlette + SQLite backend and dashboards
+
+## Backend
+
+A separate service in [`backend/`](./backend) (Starlette + ASGI/uvicorn, SQLite
+via SQLAlchemy 2.0 async, Pydantic v2, JWT auth) persists appointment requests,
+enquiries and referrals, serves the authored content as an API, and powers the
+patient and practice-admin dashboards at `/dashboard` and `/admin`.
+
+```bash
+cd backend
+uv sync --all-groups
+uv run uvicorn app.main:app --reload   # http://localhost:8000
+```
+
+Point the frontend at it with `NEXT_PUBLIC_API_URL` (see `.env.example`). See
+[`backend/README.md`](./backend/README.md) for endpoints, providers, tests and
+design notes.
 
 ## Environment
 

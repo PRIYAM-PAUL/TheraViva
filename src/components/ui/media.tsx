@@ -123,8 +123,6 @@ export function MediaFrame({
             </span>
           </div>
         )}
-
-        {asset.kind === "video" && asset.src ? null : null}
       </div>
 
       {showCaption && asset.caption ? (

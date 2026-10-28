@@ -18,6 +18,7 @@ export function TestimonialWall() {
           <Card className="flex h-full flex-col">
             <CardContent className="flex flex-1 flex-col gap-4 pt-6">
               <div
+                role="img"
                 className="flex gap-0.5"
                 aria-label={`Rated ${testimonial.rating} out of 5`}
               >

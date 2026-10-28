@@ -24,6 +24,7 @@ export default function FaqPage() {
           <div className="space-y-6">
             <Breadcrumbs items={crumbs} />
             <SectionHeading
+              as="h1"
               align="left"
               eyebrow="Questions"
               title="Frequently asked questions"

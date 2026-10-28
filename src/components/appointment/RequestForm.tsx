@@ -189,7 +189,7 @@ export function RequestForm() {
 
   if (sent) {
     return (
-      <Card>
+      <Card role="status" aria-live="polite">
         <CardContent className="space-y-5 pt-6 text-center">
           <span className="mx-auto flex size-12 items-center justify-center rounded-full bg-success/10 text-success">
             <CheckCircle2 className="size-6" aria-hidden="true" />
@@ -274,6 +274,12 @@ export function RequestForm() {
           );
         })}
       </ol>
+
+      {/* Announce step changes to assistive tech, which the visual stepper alone
+          does not convey. */}
+      <p className="sr-only" aria-live="polite">
+        Step {step + 1} of {REQUEST_STEPS.length}: {REQUEST_STEPS[step].label}
+      </p>
 
       <form
         noValidate

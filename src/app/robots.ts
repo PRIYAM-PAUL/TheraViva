@@ -18,6 +18,7 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: `${siteConfig.url}/sitemap.xml`,
-    host: siteConfig.url,
+    // The `host` directive takes a bare hostname, not a full URL.
+    host: new URL(siteConfig.url).host,
   };
 }

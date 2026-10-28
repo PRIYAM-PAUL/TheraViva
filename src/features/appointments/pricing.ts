@@ -1,4 +1,4 @@
-import { formatCurrency } from "@/lib/format";
+import { formatRupees } from "@/lib/format";
 import type { AppointmentType, Service } from "@/types";
 
 /** Lowest price for a service in a given mode (or overall). */
@@ -22,6 +22,6 @@ export function formatServicePrice(
   const amount = priceForMode(service, mode);
   if (amount === null) return "Price on request";
   if (amount === 0) return "No charge";
-  const formatted = formatCurrency(amount * 100);
+  const formatted = formatRupees(amount);
   return mode ? formatted : `from ${formatted}`;
 }

@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The Python backend lives in this repo; it is linted by ruff, not eslint.
+    "backend/**",
   ]),
 ]);
 

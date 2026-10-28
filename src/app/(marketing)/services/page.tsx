@@ -37,6 +37,7 @@ export default function ServicesPage() {
           <div className="space-y-6">
             <Breadcrumbs items={crumbs} />
             <SectionHeading
+              as="h1"
               align="left"
               eyebrow="Services"
               title="Therapy and assessment services"

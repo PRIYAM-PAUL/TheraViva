@@ -34,7 +34,13 @@ export async function generateMetadata({
 }: PageProps<"/services/[discipline]">) {
   const { discipline: slug } = await params;
   const discipline = getDiscipline(slug);
-  if (!discipline) return buildMetadata({ title: "Not found", description: "", path: "/services" });
+  if (!discipline)
+    return buildMetadata({
+      title: "Not found",
+      description: "",
+      path: "/services",
+      noIndex: true,
+    });
 
   return buildMetadata({
     title: discipline.title,
@@ -71,6 +77,7 @@ export default async function DisciplinePage({
             <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
               <div className="space-y-4">
                 <SectionHeading
+                  as="h1"
                   align="left"
                   eyebrow="Service"
                   title={discipline.title}

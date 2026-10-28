@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-const STORAGE_KEY = "theraviva.consent.v1";
+import { CONSENT_STORAGE_KEY as STORAGE_KEY } from "@/lib/analytics";
 
 export type ConsentValue = "granted" | "denied" | null;
 

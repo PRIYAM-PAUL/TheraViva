@@ -41,7 +41,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const condition = getConditionBySlug(slug);
   if (!condition)
-    return buildMetadata({ title: "Not found", description: "", path: "/conditions" });
+    return buildMetadata({
+      title: "Not found",
+      description: "",
+      path: "/conditions",
+      noIndex: true,
+    });
 
   return buildMetadata({
     title: condition.title,

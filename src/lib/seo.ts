@@ -77,7 +77,12 @@ export function buildMetadata({
 
 // ---------------------------------------------------------------- JSON-LD --
 
-/** The practice as an organization. */
+/**
+ * The practice as an organization.
+ *
+ * No `email` is emitted: the only address available is a practitioner's
+ * personal mailbox, which should not be published in machine-readable data.
+ */
 export function organizationJsonLd(): JsonLd {
   return {
     "@context": "https://schema.org",
@@ -87,8 +92,6 @@ export function organizationJsonLd(): JsonLd {
     description: siteConfig.description,
     url: absoluteUrl("/"),
     telephone: siteConfig.contact.phone,
-    email: siteConfig.contact.email,
-    medicalSpecialty: ["OccupationalTherapy", "SpeechPathology", "Audiology"],
     address: {
       "@type": "PostalAddress",
       streetAddress: primaryLocation.addressLines.join(", "),
@@ -101,7 +104,7 @@ export function organizationJsonLd(): JsonLd {
       "@type": "AdministrativeArea",
       name: area,
     })),
-    openingHours: primaryLocation.hours,
+    openingHours: primaryLocation.openingHoursIso,
   };
 }
 
@@ -118,24 +121,23 @@ export function websiteJsonLd(): JsonLd {
   };
 }
 
-/** A clinician (Physician). */
+/**
+ * A clinician.
+ *
+ * Modelled as a `Person` (an occupational therapist, speech-language therapist
+ * or audiologist is not a `Physician`). Personal phone/email are deliberately
+ * not emitted.
+ */
 export function physicianJsonLd(professional: Professional): JsonLd {
   return {
     "@context": "https://schema.org",
-    "@type": "Physician",
-    "@id": absoluteUrl(`/team/${professional.slug}#physician`),
+    "@type": "Person",
+    "@id": absoluteUrl(`/team/${professional.slug}#person`),
     name: professional.name,
     description: professional.summary,
     url: absoluteUrl(`/team/${professional.slug}`),
-    telephone: professional.phone,
-    email: professional.email,
-    medicalSpecialty: professional.disciplines.map((discipline) =>
-      discipline === "occupational-therapy"
-        ? "OccupationalTherapy"
-        : discipline === "speech-language"
-          ? "SpeechPathology"
-          : "Audiology",
-    ),
+    jobTitle: professional.headline,
+    knowsAbout: professional.skills,
     knowsLanguage: professional.languages,
     worksFor: { "@id": absoluteUrl("/#organization") },
     alumniOf: professional.credentials
@@ -147,9 +149,14 @@ export function physicianJsonLd(professional: Professional): JsonLd {
   };
 }
 
-/** A service offering. */
+/**
+ * A service offering.
+ *
+ * No `offers`/price is emitted: the prices in `src/data/services.ts` are
+ * indicative placeholders, and publishing them (or an `InStock` availability
+ * that does not exist) would put unverified facts into rich results.
+ */
 export function serviceJsonLd(service: Service): JsonLd {
-  const cheapest = [...service.prices].sort((a, b) => a.amountInr - b.amountInr)[0];
   return {
     "@context": "https://schema.org",
     "@type": "MedicalTherapy",
@@ -158,16 +165,6 @@ export function serviceJsonLd(service: Service): JsonLd {
     description: service.summary,
     url: absoluteUrl(`/services/${service.discipline}`),
     provider: { "@id": absoluteUrl("/#organization") },
-    ...(cheapest
-      ? {
-          offers: {
-            "@type": "Offer",
-            price: cheapest.amountInr,
-            priceCurrency: "INR",
-            availability: "https://schema.org/InStock",
-          },
-        }
-      : {}),
   };
 }
 

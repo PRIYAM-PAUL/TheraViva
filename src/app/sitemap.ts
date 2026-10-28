@@ -8,7 +8,6 @@ import {
   disciplines,
   locations,
   professionals,
-  services,
 } from "@/data";
 
 type ChangeFrequency = NonNullable<
@@ -77,12 +76,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/legal/disclaimer", priority: 0.2, changeFrequency: "yearly" },
     { path: "/legal/accessibility", priority: 0.2, changeFrequency: "yearly" },
   ];
-
-  // Guard against a service that is not linked from any listing page.
-  const knownServicePaths = new Set(
-    services.map((service) => `/services/${service.discipline}`),
-  );
-  void knownServicePaths;
 
   return entries.map((entry) => ({
     url: `${base}${entry.path === "/" ? "" : entry.path}`,

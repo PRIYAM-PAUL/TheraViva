@@ -35,7 +35,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const professional = getProfessionalBySlug(slug);
   if (!professional)
-    return buildMetadata({ title: "Not found", description: "", path: "/team" });
+    return buildMetadata({
+      title: "Not found",
+      description: "",
+      path: "/team",
+      noIndex: true,
+    });
 
   return buildMetadata({
     title: `${professional.name} — ${professional.headline}`,

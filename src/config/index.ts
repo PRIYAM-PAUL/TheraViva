@@ -21,3 +21,5 @@ export {
 export type { RequestStep } from "./appointment";
 
 export { SERVICE_ENDPOINTS, WELL_KNOWN, STATIC_CACHE_SECONDS } from "./endpoints";
+
+export { apiBaseUrl, isApiConfigured, API_PATHS } from "./api";

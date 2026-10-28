@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { buttonVariants, Card, CardContent } from "@/components/ui";
 import { packages } from "@/data";
-import { formatCurrency } from "@/lib/format";
+import { formatRupees } from "@/lib/format";
 
 /** Package bundles, shown on the homepage pricing section. */
 export function PricingPreview() {
@@ -27,7 +27,7 @@ export function PricingPreview() {
                 ) : null}
                 <h3 className="font-display text-lg font-semibold">{pack.name}</h3>
                 <p className="font-display text-3xl font-semibold tracking-tight text-primary">
-                  {formatCurrency(pack.amountInr * 100)}
+                  {formatRupees(pack.amountInr)}
                 </p>
                 <p className="flex items-center gap-2 text-sm text-muted-foreground">
                   <Check className="size-4 text-primary" aria-hidden="true" />

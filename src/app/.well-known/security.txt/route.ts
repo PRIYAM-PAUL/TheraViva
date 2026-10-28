@@ -3,8 +3,9 @@ import { siteConfig } from "@/config";
 /**
  * RFC 9116 security.txt, served at /.well-known/security.txt.
  *
- * The contact address is a documented placeholder — replace it with a real,
- * monitored security contact before launch. `Expires` is generated one year
+ * The contact is the site's own contact page rather than a personal email
+ * address, so no individual's mailbox is published. Replace it with a
+ * monitored security mailbox once one exists. `Expires` is generated one year
  * ahead so the file stays valid without manual upkeep.
  */
 export function GET(): Response {
@@ -13,7 +14,7 @@ export function GET(): Response {
   ).toISOString();
 
   const lines = [
-    `Contact: mailto:${siteConfig.contact.email}`,
+    `Contact: ${siteConfig.url}/contact`,
     `Expires: ${expires}`,
     "Preferred-Languages: en",
     `Canonical: ${siteConfig.url}/.well-known/security.txt`,

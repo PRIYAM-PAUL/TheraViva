@@ -3,7 +3,7 @@
  */
 
 import { MODE_LABELS } from "@/config/appointment";
-import { getProfessionalById, getServiceBySlug } from "@/data";
+import { getProfessionalById, getServiceBySlug, timeWindows } from "@/data";
 import type { AppointmentRequestValues } from "@/types";
 import { formatDateLong, parseDateKey } from "@/lib/format";
 
@@ -23,12 +23,17 @@ export function buildRequestMessage(values: AppointmentRequestValues): string {
   ];
 
   if (values.preferredDate) {
-    lines.push(
-      `Preferred date: ${formatDateLong(parseDateKey(values.preferredDate))}`,
-    );
+    const date = parseDateKey(values.preferredDate);
+    if (!Number.isNaN(date.getTime())) {
+      lines.push(`Preferred date: ${formatDateLong(date)}`);
+    }
   }
   if (values.preferredTime) {
-    lines.push(`Preferred time: ${values.preferredTime}`);
+    // Store the human label, not the raw option value (e.g. "morning").
+    const timeLabel =
+      timeWindows.find((window) => window.value === values.preferredTime)
+        ?.label ?? values.preferredTime;
+    lines.push(`Preferred time: ${timeLabel}`);
   }
 
   lines.push(

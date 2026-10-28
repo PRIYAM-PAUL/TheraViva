@@ -10,6 +10,12 @@ export interface SectionHeadingProps {
   /** Applied to the heading element, for `aria-labelledby`. */
   id?: string;
   className?: string;
+  /**
+   * Heading level to render. Defaults to `h2` (a section heading). Use `h1`
+   * when this block is the page's primary title, so the document keeps a
+   * top-level heading.
+   */
+  as?: "h1" | "h2" | "h3";
 }
 
 /** Consistent heading block used across marketing sections. */
@@ -20,6 +26,7 @@ export function SectionHeading({
   align = "center",
   id,
   className,
+  as: Heading = "h2",
 }: SectionHeadingProps) {
   return (
     <div
@@ -34,12 +41,12 @@ export function SectionHeading({
           {eyebrow}
         </p>
       ) : null}
-      <h2
+      <Heading
         id={id}
         className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl"
       >
         {title}
-      </h2>
+      </Heading>
       {description ? (
         <p
           className={cn(

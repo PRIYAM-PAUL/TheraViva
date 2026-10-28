@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "../styles/tokens.css";
+@import "../styles/themes.css";
+
+/*
+ * The app themes via `data-theme` (see styles/themes.css), not the OS setting.
+ * Redefine Tailwind's `dark:` variant so it follows the active dark theme
+ * (`midnight`) instead of `prefers-color-scheme`, which would otherwise apply
+ * the wrong palette on a light-OS device using a dark theme (and vice versa).
+ */
+@custom-variant dark (&:where([data-theme="midnight"], [data-theme="midnight"] *));
 
 @layer base {
   *,
@@ -66,16 +75,17 @@
     text-wrap: pretty;
   }
 
-  /* Warm radial wash used behind hero/CTA sections. */
+  /* Warm radial wash used behind hero/CTA sections. Theme-aware: it is built
+   * from the active palette, so it reads correctly in light and dark themes. */
   .bg-warm-radial {
     background-image: radial-gradient(
         60% 60% at 15% 0%,
-        rgb(15 118 110 / 0.08) 0%,
+        color-mix(in oklab, var(--primary) 10%, transparent) 0%,
         transparent 60%
       ),
       radial-gradient(
         50% 50% at 100% 10%,
-        rgb(245 158 11 / 0.1) 0%,
+        color-mix(in oklab, var(--accent-foreground) 12%, transparent) 0%,
         transparent 55%
       );
   }
@@ -83,7 +93,7 @@
   /* Subtle dotted texture for section backgrounds. */
   .bg-dot-grid {
     background-image: radial-gradient(
-      rgb(120 113 108 / 0.14) 1px,
+      color-mix(in oklab, var(--muted-foreground) 22%, transparent) 1px,
       transparent 1px
     );
     background-size: 22px 22px;

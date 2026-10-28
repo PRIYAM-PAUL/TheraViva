@@ -23,6 +23,7 @@ export default function PortfolioPage() {
           <div className="space-y-6">
             <Breadcrumbs items={crumbs} />
             <SectionHeading
+              as="h1"
               align="left"
               eyebrow="Portfolio"
               title="Our work, in pictures"

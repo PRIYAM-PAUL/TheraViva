@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import {
   ConditionExplorer,
   CtaBand,
@@ -15,6 +17,15 @@ import {
 } from "@/components/marketing";
 import { MarketingShell } from "@/components/layout";
 import { Container, Section } from "@/components/ui";
+import { absoluteUrl } from "@/lib/seo";
+
+/**
+ * The homepage inherits the root layout's title/description; this only adds the
+ * canonical URL that the other pages get from `buildMetadata`.
+ */
+export const metadata: Metadata = {
+  alternates: { canonical: absoluteUrl("/") },
+};
 
 export default function HomePage() {
   return (
@@ -91,7 +102,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section aria-labelledby="reviews-heading" spacing="md">
+      <Section spacing="md">
         <Container className="space-y-10">
           <TestimonialWall />
         </Container>

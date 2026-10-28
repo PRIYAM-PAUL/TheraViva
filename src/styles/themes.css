@@ -1,0 +1,245 @@
+/**
+ * TheraViva themes.
+ *
+ * Each block re-points the design tokens defined in `tokens.css`. They are
+ * written as **unlayered** `html[data-theme="…"]` rules on purpose:
+ *
+ * - `html[data-theme]` (specificity 0,1,1) outranks the `:root` defaults
+ *   (0,1,0), so a theme reliably overrides the default palette.
+ * - They are not inside an `@layer`, so they also outrank the `next/font`
+ *   variable classes (`.--font_*`, specificity 0,1,0, unlayered) that bind the
+ *   concrete font families on `<html>`.
+ *
+ * The default `light` theme lives in `tokens.css` `:root`; only the alternates
+ * are declared here. Switching back to `light` simply stops matching any block
+ * below and the `:root` values apply again.
+ *
+ * `--font-body` / `--font-heading` reference the `next/font` families wired in
+ * `src/app/layout.tsx` (`--font-<family>`), which is what gives each theme its
+ * own typographic character.
+ */
+
+/* Soft — warm, gentle, rounded. Cream, sage and soft brown. */
+html[data-theme="soft"] {
+  --background: #fbf8f3;
+  --foreground: #3d3833;
+
+  --card: #ffffff;
+  --card-foreground: #3d3833;
+
+  --popover: #ffffff;
+  --popover-foreground: #3d3833;
+
+  --primary: #6b8f71;
+  --primary-foreground: #f7fbf6;
+
+  --secondary: #f2ece1;
+  --secondary-foreground: #3d3833;
+
+  --muted: #f2ece1;
+  --muted-foreground: #6f6559;
+
+  --accent: #eef3ea;
+  --accent-foreground: #3f5c44;
+
+  --destructive: #b4553f;
+  --destructive-foreground: #fdf5f2;
+
+  --success: #4f7a52;
+  --success-foreground: #f2f8f2;
+
+  --warning: #a9793a;
+  --warning-foreground: #fdf8ee;
+
+  --border: #e8e0d3;
+  --input: #e8e0d3;
+  --ring: #6b8f71;
+
+  --surface-warm: #f7f2e9;
+  --surface-teal: #eef3ea;
+
+  --radius: 1.125rem;
+
+  --font-body: var(--font-nunito);
+  --font-heading: var(--font-fraunces);
+}
+
+/* Medical — crisp, clinical, trustworthy. White, clinical blue and slate. */
+html[data-theme="medical"] {
+  --background: #ffffff;
+  --foreground: #0f172a;
+
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  --primary: #1d4ed8;
+  --primary-foreground: #eff6ff;
+
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+
+  --muted: #f1f5f9;
+  --muted-foreground: #475569;
+
+  --accent: #e0edff;
+  --accent-foreground: #1e3a8a;
+
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+
+  --success: #15803d;
+  --success-foreground: #f0fdf4;
+
+  --warning: #b45309;
+  --warning-foreground: #fffbeb;
+
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #1d4ed8;
+
+  --surface-warm: #f8fafc;
+  --surface-teal: #eff6ff;
+
+  --radius: 0.5rem;
+
+  --font-body: var(--font-manrope);
+  --font-heading: var(--font-newsreader);
+}
+
+/* Wellness — airy and restorative. Lavender, lilac and mint. */
+html[data-theme="wellness"] {
+  --background: #fbfaff;
+  --foreground: #2e2a3f;
+
+  --card: #ffffff;
+  --card-foreground: #2e2a3f;
+
+  --popover: #ffffff;
+  --popover-foreground: #2e2a3f;
+
+  --primary: #7c6bb0;
+  --primary-foreground: #f8f6ff;
+
+  --secondary: #f3f0fa;
+  --secondary-foreground: #2e2a3f;
+
+  --muted: #f3f0fa;
+  --muted-foreground: #635d7a;
+
+  --accent: #eaf6f1;
+  --accent-foreground: #3f6b5c;
+
+  --destructive: #c25570;
+  --destructive-foreground: #fdf3f5;
+
+  --success: #3f8f6f;
+  --success-foreground: #f0faf5;
+
+  --warning: #a97a3a;
+  --warning-foreground: #fdf8ee;
+
+  --border: #e8e3f3;
+  --input: #e8e3f3;
+  --ring: #7c6bb0;
+
+  --surface-warm: #f7f4fd;
+  --surface-teal: #eaf6f1;
+
+  --radius: 1.25rem;
+
+  --font-body: var(--font-karla);
+  --font-heading: var(--font-cormorant);
+}
+
+/* Sunrise — cosy and human. Terracotta, amber and sand. */
+html[data-theme="sunrise"] {
+  --background: #fff9f2;
+  --foreground: #3a2c24;
+
+  --card: #fffdfa;
+  --card-foreground: #3a2c24;
+
+  --popover: #fffdfa;
+  --popover-foreground: #3a2c24;
+
+  --primary: #c2593a;
+  --primary-foreground: #fdf4f0;
+
+  --secondary: #f7ede1;
+  --secondary-foreground: #3a2c24;
+
+  --muted: #f7ede1;
+  --muted-foreground: #7a6558;
+
+  --accent: #fdeed6;
+  --accent-foreground: #8a4a1c;
+
+  --destructive: #c0392b;
+  --destructive-foreground: #fdf3f1;
+
+  --success: #6b8f4f;
+  --success-foreground: #f4f8ee;
+
+  --warning: #b8770f;
+  --warning-foreground: #fdf6e8;
+
+  --border: #efe1d1;
+  --input: #efe1d1;
+  --ring: #c2593a;
+
+  --surface-warm: #fdf3e7;
+  --surface-teal: #fbeee3;
+
+  --radius: 1rem;
+
+  --font-body: var(--font-plus-jakarta);
+  --font-heading: var(--font-fraunces);
+}
+
+/* Midnight — low-glare night. Deep slate with a softened teal accent. */
+html[data-theme="midnight"] {
+  --background: #0b1115;
+  --foreground: #e8eef1;
+
+  --card: #131c22;
+  --card-foreground: #e8eef1;
+
+  --popover: #131c22;
+  --popover-foreground: #e8eef1;
+
+  --primary: #5eead4;
+  --primary-foreground: #04211d;
+
+  --secondary: #1b262d;
+  --secondary-foreground: #e8eef1;
+
+  --muted: #1b262d;
+  --muted-foreground: #9fb0b8;
+
+  --accent: #1f2b33;
+  --accent-foreground: #7dd3c8;
+
+  --destructive: #f87171;
+  --destructive-foreground: #3b0a0a;
+
+  --success: #4ade80;
+  --success-foreground: #052e16;
+
+  --warning: #fbbf24;
+  --warning-foreground: #3b2a05;
+
+  --border: #24313a;
+  --input: #24313a;
+  --ring: #5eead4;
+
+  --surface-warm: #10181d;
+  --surface-teal: #0a2320;
+
+  --radius: 0.875rem;
+
+  --font-body: var(--font-geist-sans);
+  --font-heading: var(--font-fraunces);
+}

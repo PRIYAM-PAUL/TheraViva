@@ -26,6 +26,20 @@ export function formatCurrency(
   }).format(amountInMinorUnits / 100);
 }
 
+/**
+ * Format a whole-rupee amount.
+ *
+ * Domain prices are stored as whole rupees (`amountInr`), whereas
+ * `formatCurrency` expects minor units. This wrapper keeps the `* 100`
+ * conversion in one place so a call site can't silently render 1/100th.
+ */
+export function formatRupees(
+  amountInr: number,
+  locale: string = DEFAULT_LOCALE,
+): string {
+  return formatCurrency(Math.round(amountInr * 100), DEFAULT_CURRENCY, locale);
+}
+
 /** Local `YYYY-MM-DD` key for a date. */
 export function formatDateKey(date: Date): string {
   const year = date.getFullYear();

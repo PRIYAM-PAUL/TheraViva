@@ -13,7 +13,7 @@ import {
 } from "@/components/ui";
 import { MODE_LABELS } from "@/config/appointment";
 import { disciplines, packages, pricingDisclaimer, pricingNotes, services } from "@/data";
-import { formatCurrency, formatDuration } from "@/lib/format";
+import { formatDuration, formatRupees } from "@/lib/format";
 import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
@@ -36,6 +36,7 @@ export default function PricingPage() {
           <div className="space-y-6">
             <Breadcrumbs items={crumbs} />
             <SectionHeading
+              as="h1"
               align="left"
               eyebrow="Pricing"
               title="Clear fees, before you commit"
@@ -112,7 +113,7 @@ export default function PricingPage() {
                                   <span className="font-medium text-foreground">
                                     {price.amountInr === 0
                                       ? "No charge"
-                                      : formatCurrency(price.amountInr * 100)}
+                                      : formatRupees(price.amountInr)}
                                   </span>
                                 </li>
                               ))}
@@ -148,7 +149,7 @@ export default function PricingPage() {
                         {pack.name}
                       </h3>
                       <p className="font-display text-3xl font-semibold tracking-tight text-primary">
-                        {formatCurrency(pack.amountInr * 100)}
+                        {formatRupees(pack.amountInr)}
                       </p>
                       <p className="text-sm text-muted-foreground">
                         {pack.sessions} sessions

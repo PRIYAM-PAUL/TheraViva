@@ -20,7 +20,9 @@ export function ConsentBanner() {
     <div
       role="region"
       aria-label="Analytics consent"
-      className="fixed inset-x-3 bottom-3 z-50 rounded-xl border border-border bg-card p-4 shadow-lifted sm:inset-x-auto sm:right-4 sm:max-w-md"
+      // Sits above the sticky mobile action bar (`floating-actions`) so it never
+      // covers the Call / WhatsApp / Book buttons while it is visible.
+      className="fixed inset-x-3 bottom-20 z-50 rounded-xl border border-border bg-card p-4 shadow-lifted sm:inset-x-auto sm:right-4 sm:max-w-md lg:bottom-4"
     >
       <p className="text-sm font-medium text-foreground">
         We&apos;d like to measure how this site is used

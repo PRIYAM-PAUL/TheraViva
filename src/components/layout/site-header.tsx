@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import * as React from "react";
 
 import { TopBar } from "@/components/layout/top-bar";
+import { ThemeSwitcher } from "@/components/theme";
 import { Button, buttonVariants, Container } from "@/components/ui";
 import { siteConfig } from "@/config";
 import { trackContact } from "@/lib/analytics";
@@ -65,6 +66,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
+            <ThemeSwitcher />
             <a
               href={whatsAppLink()}
               target="_blank"
@@ -90,7 +92,7 @@ export function SiteHeader() {
             size="icon"
             className="lg:hidden"
             aria-expanded={open}
-            aria-controls="mobile-nav"
+            aria-controls={open ? "mobile-nav" : undefined}
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((value) => !value)}
           >
@@ -103,8 +105,9 @@ export function SiteHeader() {
         </Container>
 
         {open ? (
-          <div
+          <nav
             id="mobile-nav"
+            aria-label="Mobile"
             className="border-t border-border bg-background lg:hidden"
           >
             <Container className="flex flex-col gap-1 py-4">
@@ -124,7 +127,13 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <div className="mt-3 flex flex-col gap-2">
+              <div className="mt-3 flex items-center justify-between rounded-lg border border-border px-3 py-1.5">
+                <span className="text-sm font-medium text-muted-foreground">
+                  Theme
+                </span>
+                <ThemeSwitcher />
+              </div>
+              <div className="mt-1 flex flex-col gap-2">
                 <Link
                   href="/book"
                   onClick={closeMenu}
@@ -157,7 +166,7 @@ export function SiteHeader() {
                 </a>
               </div>
             </Container>
-          </div>
+          </nav>
         ) : null}
       </header>
     </>

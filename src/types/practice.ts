@@ -143,8 +143,10 @@ export interface PracticeLocation {
   state: string;
   addressLines: string[];
   pincode: string;
-  /** Human-readable opening hours. */
+  /** Human-readable opening hours, shown in the UI. */
   hours: string[];
+  /** Machine-readable hours for structured data, e.g. "Mo-Fr 09:00-19:00". */
+  openingHoursIso: string[];
   phone: string;
   /** Free-text map query for an embed/directions link. */
   mapQuery: string;

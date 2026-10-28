@@ -35,6 +35,7 @@ export default function TeamPage() {
           <div className="space-y-6">
             <Breadcrumbs items={crumbs} />
             <SectionHeading
+              as="h1"
               align="left"
               eyebrow="Our team"
               title="The specialists you'll work with"

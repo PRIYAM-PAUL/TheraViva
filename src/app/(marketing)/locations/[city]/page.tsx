@@ -27,7 +27,12 @@ export async function generateMetadata({
   const { city } = await params;
   const location = getLocationBySlug(city);
   if (!location)
-    return buildMetadata({ title: "Not found", description: "", path: "/contact" });
+    return buildMetadata({
+      title: "Not found",
+      description: "",
+      path: "/contact",
+      noIndex: true,
+    });
 
   return buildMetadata({
     title: `Therapy in ${location.city}`,
@@ -56,6 +61,7 @@ export default async function LocationPage({
           <div className="space-y-6">
             <Breadcrumbs items={crumbs} />
             <SectionHeading
+              as="h1"
               align="left"
               eyebrow="Where we work"
               title={`Therapy in ${location.city}`}

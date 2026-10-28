@@ -40,6 +40,7 @@ export default function ContactPage() {
           <div className="space-y-6">
             <Breadcrumbs items={crumbs} />
             <SectionHeading
+              as="h1"
               align="left"
               eyebrow="Contact"
               title="Talk to us"

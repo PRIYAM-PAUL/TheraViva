@@ -23,7 +23,12 @@ export async function generateMetadata({
   const { album: slug } = await params;
   const album = getAlbumBySlug(slug);
   if (!album)
-    return buildMetadata({ title: "Not found", description: "", path: "/portfolio" });
+    return buildMetadata({
+      title: "Not found",
+      description: "",
+      path: "/portfolio",
+      noIndex: true,
+    });
 
   return buildMetadata({
     title: album.title,

@@ -32,6 +32,7 @@ export default function ConditionsPage() {
           <div className="space-y-6">
             <Breadcrumbs items={crumbs} />
             <SectionHeading
+              as="h1"
               align="left"
               eyebrow="Conditions"
               title="Support for a wide range of needs"

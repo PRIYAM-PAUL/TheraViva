@@ -2,8 +2,14 @@
  * TheraViva design tokens.
  *
  * Direction: warm, human, premium medical. Teal primary over warm stone
- * neutrals, with a sand accent and soft layered shadows. Light + dark via
- * `prefers-color-scheme`, mapped into Tailwind v4 with `@theme inline`.
+ * neutrals, with a sand accent and soft layered shadows. Mapped into Tailwind
+ * v4 with `@theme inline`.
+ *
+ * The `:root` values below are the **default (`light`) theme**. Every other
+ * theme lives in `themes.css` as an `html[data-theme="…"]` override, applied at
+ * runtime by the theme provider / no-flash script. Because the overrides use a
+ * `html[data-theme]` selector they outrank `:root` on specificity, and because
+ * they are unlayered they also outrank the `next/font` variable classes.
  */
 
 :root {
@@ -46,47 +52,12 @@
   --surface-teal: #f0fdfa;
 
   --radius: 0.875rem;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0c0a09;
-    --foreground: #f5f5f4;
-
-    --card: #1c1917;
-    --card-foreground: #f5f5f4;
-
-    --popover: #1c1917;
-    --popover-foreground: #f5f5f4;
-
-    --primary: #2dd4bf;
-    --primary-foreground: #042f2e;
-
-    --secondary: #292524;
-    --secondary-foreground: #f5f5f4;
-
-    --muted: #292524;
-    --muted-foreground: #a8a29e;
-
-    --accent: #451a03;
-    --accent-foreground: #fcd34d;
-
-    --destructive: #f87171;
-    --destructive-foreground: #450a0a;
-
-    --success: #4ade80;
-    --success-foreground: #052e16;
-
-    --warning: #fbbf24;
-    --warning-foreground: #451a03;
-
-    --border: #292524;
-    --input: #292524;
-    --ring: #2dd4bf;
-
-    --surface-warm: #171412;
-    --surface-teal: #042f2e;
-  }
+  /* Font primitives. `next/font` binds the concrete families to these names on
+   * `<html>`; each theme re-points them so headings and body copy change
+   * character without touching component markup. */
+  --font-body: var(--font-geist-sans);
+  --font-heading: var(--font-fraunces);
 }
 
 @theme inline {
@@ -117,9 +88,11 @@
   --color-surface-warm: var(--surface-warm);
   --color-surface-teal: var(--surface-teal);
 
-  /* Typography */
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  /* Typography. These reference the themeable primitives above so a theme swap
+   * re-fonts both the `.font-sans` / `.font-display` utilities and the base
+   * `body` / heading rules. */
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-heading), ui-serif, Georgia, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 
   /* Radii */

@@ -21,6 +21,9 @@ export const locations: PracticeLocation[] = [
       "Saturday: 9:00 am – 5:00 pm",
       "Sunday: By appointment",
     ],
+    // Schema.org `openingHours` format. Sunday is by appointment, so it is
+    // intentionally omitted here rather than advertised as open.
+    openingHoursIso: ["Mo-Fr 09:00-19:00", "Sa 09:00-17:00"],
     phone: "+91 7838696558",
     mapQuery: "New Delhi, India",
     serviceArea: [
