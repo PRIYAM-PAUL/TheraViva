@@ -7,7 +7,14 @@ from datetime import date, datetime, timedelta
 from starlette.requests import Request
 from starlette.responses import Response
 
-from app.api.deps import db_session, optional_user, pagination, read_json, require_admin
+from app.api.deps import (
+    current_user,
+    db_session,
+    optional_user,
+    pagination,
+    read_json,
+    require_staff,
+)
 from app.api.responses import json_response
 from app.api.schemas.common import PageOut
 from app.api.schemas.scheduling import (
@@ -16,10 +23,13 @@ from app.api.schemas.scheduling import (
     AppointmentStatusUpdate,
     AvailabilitySlot,
 )
+from app.domain.models import STAFF_ROLES
 from app.domain.services import scheduling as scheduling_service
 from app.errors import NotFoundError, ValidationError
 from app.metrics import APPOINTMENTS_CREATED
 from app.utils.pagination import Page
+
+TERMINAL_STATUSES = ("cancelled", "completed", "no_show")
 
 
 def _appointment_out(appointment) -> AppointmentOut:
@@ -128,10 +138,34 @@ async def update_appointment_status(request: Request) -> Response:
     reference = request.path_params["reference"]
     body = await read_json(request, AppointmentStatusUpdate)
     async with db_session(request) as session:
-        admin = await require_admin(request, session)
+        admin = await require_staff(request, session)
         appointment = await scheduling_service.get_by_reference(session, reference)
         await scheduling_service.transition(
             session, appointment, body.status, actor=admin, note=body.note, request=request
+        )
+        await session.commit()
+        await session.refresh(appointment)
+        return json_response(_appointment_out(appointment))
+
+
+async def cancel_appointment(request: Request) -> Response:
+    """A patient cancels their own appointment; staff may cancel any."""
+    reference = request.path_params["reference"]
+    async with db_session(request) as session:
+        user = await current_user(request, session)
+        appointment = await scheduling_service.get_by_reference(session, reference)
+        is_staff = user.role in STAFF_ROLES
+        if not is_staff and appointment.patient_user_id != user.id:
+            raise NotFoundError("Appointment not found.")
+        if appointment.status in TERMINAL_STATUSES:
+            raise ValidationError("This appointment can no longer be cancelled.")
+        await scheduling_service.transition(
+            session,
+            appointment,
+            "cancelled",
+            actor=user,
+            note="Cancelled by " + ("staff" if is_staff else "patient"),
+            request=request,
         )
         await session.commit()
         await session.refresh(appointment)

@@ -11,7 +11,9 @@ from app.api.v1.routes import (
     auth,
     billing,
     catalog,
+    chat,
     dashboard,
+    documents,
     intake,
 )
 
@@ -57,13 +59,32 @@ def build_v1_router() -> Router:
             appointments.update_appointment_status,
             methods=["PATCH"],
         ),
+        Route(
+            "/appointments/{reference}/cancel",
+            appointments.cancel_appointment,
+            methods=["POST"],
+        ),
         # Billing
         Route("/billing/invoices", billing.list_invoices, methods=["GET"]),
         Route("/billing/invoices", billing.create_invoice, methods=["POST"]),
         Route("/billing/invoices/{invoice_id}", billing.get_invoice, methods=["GET"]),
         Route("/billing/payments", billing.list_payments, methods=["GET"]),
         Route("/billing/payments", billing.record_payment, methods=["POST"]),
+        Route("/billing/payments/razorpay/order", billing.create_checkout, methods=["POST"]),
+        Route("/billing/payments/razorpay/verify", billing.verify_checkout, methods=["POST"]),
         Route("/billing/refunds", billing.create_refund, methods=["POST"]),
+        # Payment webhooks (signature-verified, no auth header)
+        Route("/webhooks/razorpay", billing.razorpay_webhook, methods=["POST"]),
+        # Documents (prescription/report uploads)
+        Route("/documents", documents.upload_document, methods=["POST"]),
+        Route("/documents", documents.list_documents, methods=["GET"]),
+        Route("/documents/{document_id}", documents.download_document, methods=["GET"]),
+        # Chat (patient ↔ clinic)
+        Route("/chat/threads", chat.create_thread, methods=["POST"]),
+        Route("/chat/threads", chat.list_threads, methods=["GET"]),
+        Route("/chat/threads/{thread_id}/messages", chat.list_messages, methods=["GET"]),
+        Route("/chat/threads/{thread_id}/messages", chat.post_message, methods=["POST"]),
+        Route("/chat/threads/{thread_id}/read", chat.mark_thread_read, methods=["POST"]),
         # Analytics
         Route("/analytics/events", analytics.record_event, methods=["POST"]),
         Route("/analytics/seo", analytics.create_seo_snapshot, methods=["POST"]),
@@ -76,6 +97,10 @@ def build_v1_router() -> Router:
         Route("/admin/intake/{kind}/{record_id}", admin.update_intake_status, methods=["PATCH"]),
         Route("/admin/audit-log", admin.list_audit_log, methods=["GET"]),
         Route("/admin/users", admin.list_users, methods=["GET"]),
+        Route("/admin/users", admin.create_user, methods=["POST"]),
+        Route("/admin/users/{user_id}", admin.update_user, methods=["PATCH"]),
+        # Staff-accessible patient list
+        Route("/staff/patients", admin.list_patients, methods=["GET"]),
         # Admin catalog writes
         Route("/admin/catalog/{kind}/{slug}", catalog.upsert_item, methods=["PUT"]),
         Route("/admin/catalog/{kind}/{slug}", catalog.delete_item, methods=["DELETE"]),

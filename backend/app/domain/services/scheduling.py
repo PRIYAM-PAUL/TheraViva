@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import uuid
-from datetime import UTC, date, datetime, time, timedelta
+from datetime import UTC, date, datetime, time, timedelta, timezone
 from typing import Any
 
 from sqlalchemy import select
@@ -27,6 +27,9 @@ from app.utils.security import new_reference
 
 ACTIVE_STATUSES = ("held", "requested", "confirmed")
 HOLD_MINUTES = 15
+
+#: The practice operates in India; weekly rules are authored in IST and stored as UTC.
+CLINIC_TZ = timezone(timedelta(hours=5, minutes=30))
 
 
 def _as_utc(dt: datetime) -> datetime:
@@ -54,7 +57,14 @@ async def _existing_slots(
             Appointment.ends_at > start,
         )
     )
-    return [(_as_utc(row.starts_at), _as_utc(row.ends_at)) for row in rows.all()]
+    now = utcnow()
+    blocks: list[tuple[datetime, datetime]] = []
+    for row in rows.all():
+        # An expired hold no longer blocks the slot.
+        if row.status == "held" and row.hold_expires_at and _as_utc(row.hold_expires_at) < now:
+            continue
+        blocks.append((_as_utc(row.starts_at), _as_utc(row.ends_at)))
+    return blocks
 
 
 async def generate_slots(
@@ -104,8 +114,8 @@ async def generate_slots(
                 continue
             if rule.effective_to and day > rule.effective_to:
                 continue
-            start_dt = datetime.combine(day, rule.start_time, tzinfo=UTC)
-            end_dt = datetime.combine(day, rule.end_time, tzinfo=UTC)
+            start_dt = datetime.combine(day, rule.start_time, tzinfo=CLINIC_TZ).astimezone(UTC)
+            end_dt = datetime.combine(day, rule.end_time, tzinfo=CLINIC_TZ).astimezone(UTC)
             booked = await _existing_slots(session, professional_id, start_dt, end_dt)
             cursor = start_dt
             while cursor + timedelta(minutes=rule.slot_minutes) <= end_dt:

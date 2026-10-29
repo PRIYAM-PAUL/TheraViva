@@ -23,6 +23,17 @@ const apiOrigins = (() => {
   return [...origins].join(" ");
 })();
 
+/** Optional Grafana origin, embedded in the admin analytics page. */
+const grafanaOrigin = (() => {
+  const value = process.env.NEXT_PUBLIC_GRAFANA_URL;
+  if (!value) return "";
+  try {
+    return new URL(value).origin;
+  } catch {
+    return "";
+  }
+})();
+
 /**
  * Content Security Policy.
  *
@@ -30,16 +41,20 @@ const apiOrigins = (() => {
  * rendered. `'unsafe-inline'` is required for Next's hydration bootstrap and for
  * the theme/JSON-LD inline scripts; it can be tightened to a nonce later by
  * moving this into `src/proxy.ts`, which forces dynamic rendering.
+ *
+ * Razorpay Checkout loads a script and an iframe; the Grafana board is framed
+ * when NEXT_PUBLIC_GRAFANA_URL is configured.
  */
 const contentSecurityPolicy = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://connect.facebook.net`,
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://connect.facebook.net https://checkout.razorpay.com`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
   "connect-src 'self' " +
     apiOrigins +
-    " https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.facebook.com https://connect.facebook.net",
+    " https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://www.facebook.com https://connect.facebook.net https://api.razorpay.com https://lumberjack.razorpay.com",
+  `frame-src 'self' https://api.razorpay.com https://checkout.razorpay.com${grafanaOrigin ? ` ${grafanaOrigin}` : ""}`,
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -55,7 +70,7 @@ const securityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   {
     key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), payment=()",
+    value: 'camera=(), microphone=(), geolocation=(), payment=(self "https://checkout.razorpay.com")',
   },
   {
     key: "Strict-Transport-Security",

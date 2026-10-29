@@ -39,6 +39,7 @@ async def app():
     async with application.state.sessionmaker() as session:
         await seed_catalog(session)
         await auth_service.ensure_admin_bootstrap(session)
+        await auth_service.ensure_staff_bootstrap(session)
 
     yield application
 
@@ -74,6 +75,24 @@ async def patient_headers(client) -> dict[str, str]:
     )
     assert verified.status_code == 200, verified.text
     return {"Authorization": f"Bearer {verified.json()['accessToken']}"}
+
+
+async def _staff_headers(client, email: str, password: str) -> dict[str, str]:
+    response = await client.post(
+        "/api/v1/auth/staff/login", json={"email": email, "password": password}
+    )
+    assert response.status_code == 200, response.text
+    return {"Authorization": f"Bearer {response.json()['accessToken']}"}
+
+
+@pytest_asyncio.fixture
+async def reception_headers(client) -> dict[str, str]:
+    return await _staff_headers(client, settings.reception_email, settings.reception_password)
+
+
+@pytest_asyncio.fixture
+async def therapist_headers(client) -> dict[str, str]:
+    return await _staff_headers(client, settings.therapist_email, settings.therapist_password)
 
 
 @pytest.fixture

@@ -37,25 +37,28 @@ Frontend only. No backend.
 
 ---
 
-## Phase 2 — Real booking + payments
+## Phase 2 — Real booking + payments ✅ BUILT (this iteration)
 
-Requires a backend.
+Backend: Starlette + SQLite (SQLAlchemy 2.0 async + Alembic).
 
-- Supabase (Postgres + Auth + Storage, Mumbai region) + Drizzle
-- Real availability: recurring rules + exceptions per professional and mode
-- Slot hold → confirm → reminder; reschedule/cancel via signed token link
-- Patient auth via **phone OTP** (India-first)
-- **Razorpay** payments (UPI/cards/netbanking), pay-now or pay-at-clinic, GST invoices
-- WhatsApp Cloud API + Resend confirmations and 24h/1h reminders
-- ICS / Google Calendar links; Zoom/Meet link per appointment (manual at first)
-- Replace the request form with real booking (keep the request form as a fallback)
+- [x] Backend service with migrations, seeding and tests
+- [x] Real availability: weekly rules + exceptions per professional and mode (IST)
+- [x] Slot hold → confirm; patient self-service cancel
+- [x] Patient auth via **phone OTP** (India-first)
+- [x] **Razorpay** payments (test mode): order → Checkout → signature/webhook verify
+- [x] Prescription/report uploads (storage provider; AI analysis deferred)
+- [x] Patient ↔ clinic **live chat**
+- [x] GST extraction (`utils/gst.py`); manual/offline payments retained
+- [ ] WhatsApp Cloud API + Resend confirmations and reminders (models exist)
+- [ ] ICS / Google Calendar links
 
-## Phase 3 — Portals + CRM
+## Phase 3 — Portals + CRM ✅ BUILT (this iteration)
 
-- Patient portal: appointments, payments, invoices, documents, join link
-- Doctor dashboard: schedule, availability editor, patient list, clinical notes (SOAP), earnings
-- Admin: services, pricing, media, blog, payments, refunds, audit log
-- RBAC + Postgres RLS on every table
+- [x] Patient portal: appointments, payments, prescriptions, chat, FAQs
+- [x] Staff area: appointments, intake triage, payments/refunds, patients, inbox
+- [x] Admin: KPIs, revenue, engagement, SEO, catalog, staff accounts, audit log
+- [x] **RBAC**: `patient` / `reception` / `therapist` / `admin` enforced server-side
+- [x] Grafana + Prometheus observability stack (`docker compose up`)
 
 ## Phase 4 — Content engine + SEO scale
 

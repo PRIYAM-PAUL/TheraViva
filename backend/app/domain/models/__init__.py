@@ -13,9 +13,20 @@ from app.domain.models.billing import (
     Refund,
 )  # re-exported for callers
 from app.domain.models.catalog import CATALOG_KINDS, CatalogItem
+from app.domain.models.chat import THREAD_STATUSES, ChatMessage, ChatThread
 from app.domain.models.clinical import ClinicalNote, Document
 from app.domain.models.engagement import ENGAGEMENT_EVENT_TYPES, EngagementEvent, SeoSnapshot
-from app.domain.models.identity import ROLE_ADMIN, ROLE_PATIENT, OtpChallenge, RefreshToken, User
+from app.domain.models.identity import (
+    ALL_ROLES,
+    ROLE_ADMIN,
+    ROLE_PATIENT,
+    ROLE_RECEPTION,
+    ROLE_THERAPIST,
+    STAFF_ROLES,
+    OtpChallenge,
+    RefreshToken,
+    User,
+)
 from app.domain.models.intake import (
     INTAKE_STATUSES,
     AppointmentRequest,
@@ -33,6 +44,7 @@ from app.domain.models.scheduling import (
 )
 
 __all__ = [
+    "ALL_ROLES",
     "APPOINTMENT_STATUSES",
     "CATALOG_KINDS",
     "ENGAGEMENT_EVENT_TYPES",
@@ -41,6 +53,10 @@ __all__ = [
     "PAYMENT_STATUSES",
     "ROLE_ADMIN",
     "ROLE_PATIENT",
+    "ROLE_RECEPTION",
+    "ROLE_THERAPIST",
+    "STAFF_ROLES",
+    "THREAD_STATUSES",
     "ActionToken",
     "Appointment",
     "AppointmentEvent",
@@ -50,6 +66,8 @@ __all__ = [
     "AvailabilityRule",
     "Base",
     "CatalogItem",
+    "ChatMessage",
+    "ChatThread",
     "ClinicalNote",
     "Document",
     "EngagementEvent",

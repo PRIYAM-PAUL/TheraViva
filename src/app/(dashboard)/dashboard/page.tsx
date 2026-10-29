@@ -7,6 +7,7 @@ import {
   DataTable,
   EmptyState,
   KpiCard,
+  PayOnlineButton,
   StatusBadge,
   type Column,
 } from "@/components/dashboard";
@@ -30,12 +31,23 @@ const appointmentColumns: Column<Appointment>[] = [
   { key: "status", header: "Status", render: (row) => <StatusBadge status={row.status} /> },
 ];
 
-const invoiceColumns: Column<Invoice>[] = [
-  { key: "number", header: "Invoice" },
-  { key: "description", header: "For" },
-  { key: "totalInr", header: "Total", align: "right", render: (row) => formatRupees(row.totalInr) },
-  { key: "status", header: "Status", render: (row) => <StatusBadge status={row.status} /> },
-];
+function invoiceColumns(onPaid: () => void): Column<Invoice>[] {
+  return [
+    { key: "number", header: "Invoice" },
+    { key: "description", header: "For" },
+    { key: "totalInr", header: "Total", align: "right", render: (row) => formatRupees(row.totalInr) },
+    { key: "status", header: "Status", render: (row) => <StatusBadge status={row.status} /> },
+    {
+      key: "actions",
+      header: "",
+      align: "right",
+      render: (row) =>
+        row.status === "issued" ? (
+          <PayOnlineButton invoiceId={row.id} amountInr={row.totalInr} onPaid={onPaid} />
+        ) : null,
+    },
+  ];
+}
 
 const paymentColumns: Column<Payment>[] = [
   { key: "createdAt", header: "Date", render: (row) => formatDateShort(new Date(row.createdAt)) },
@@ -46,7 +58,7 @@ const paymentColumns: Column<Payment>[] = [
 
 function PatientDashboardView() {
   const { user } = useAuth();
-  const { data, loading, error } = usePatientDashboard(Boolean(user));
+  const { data, loading, error, reload } = usePatientDashboard(Boolean(user));
 
   if (loading) {
     return (
@@ -135,7 +147,7 @@ function PatientDashboardView() {
           </CardHeader>
           <CardContent>
             <DataTable
-              columns={invoiceColumns}
+              columns={invoiceColumns(reload)}
               rows={data.invoices}
               rowKey={(row) => row.id}
               emptyLabel="No invoices yet."

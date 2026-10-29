@@ -12,7 +12,18 @@
 import * as React from "react";
 
 import { api, ApiError } from "@/lib/api";
-import type { AdminDashboard, PatientDashboard } from "@/features/dashboard/types";
+import type {
+  AdminDashboard,
+  Appointment,
+  ChatMessage,
+  ChatThread,
+  DocumentItem,
+  Invoice,
+  Page,
+  PatientDashboard,
+  Payment,
+  StaffUser,
+} from "@/features/dashboard/types";
 
 interface QueryState<T> {
   data: T | null;
@@ -21,7 +32,7 @@ interface QueryState<T> {
   reload: () => void;
 }
 
-function useQuery<T>(key: string, fetcher: () => Promise<T>): QueryState<T> {
+export function useQuery<T>(key: string, fetcher: () => Promise<T>): QueryState<T> {
   const [data, setData] = React.useState<T | null>(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
@@ -67,4 +78,42 @@ export function usePatientDashboard(enabled: boolean): QueryState<PatientDashboa
 
 export function useAdminDashboard(from?: string, to?: string): QueryState<AdminDashboard> {
   return useQuery(`admin:${from ?? ""}:${to ?? ""}`, () => api.dashboard.admin(from, to));
+}
+
+export function useDocuments(kind?: string): QueryState<Page<DocumentItem>> {
+  return useQuery(`documents:${kind ?? "all"}`, () => api.documents.list(kind));
+}
+
+export function useChatThreads(): QueryState<Page<ChatThread>> {
+  return useQuery("chat:threads", () => api.chat.threads());
+}
+
+export function useChatMessages(threadId: string | null): QueryState<ChatMessage[]> {
+  return useQuery(`chat:messages:${threadId ?? "none"}`, () =>
+    threadId ? api.chat.messages(threadId) : new Promise<ChatMessage[]>(() => []),
+  );
+}
+
+export function useAppointments(params: { status?: string } = {}): QueryState<Page<Appointment>> {
+  return useQuery(`appointments:${params.status ?? "all"}`, () => api.appointments.list(params));
+}
+
+export function useInvoices(): QueryState<Page<Invoice>> {
+  return useQuery("invoices", () => api.billing.invoices());
+}
+
+export function usePayments(invoiceId?: string): QueryState<Page<Payment>> {
+  return useQuery(`payments:${invoiceId ?? "all"}`, () => api.billing.payments(invoiceId));
+}
+
+export function useAdminUsers(): QueryState<Page<StaffUser>> {
+  return useQuery("admin:users", () => api.admin.users());
+}
+
+export function useStaffPatients(): QueryState<Page<StaffUser>> {
+  return useQuery("staff:patients", () => api.admin.patients());
+}
+
+export function useAdminIntake(kind: string, status?: string): QueryState<Page<Record<string, unknown>>> {
+  return useQuery(`admin:intake:${kind}:${status ?? "all"}`, () => api.admin.intake(kind, status));
 }

@@ -12,6 +12,8 @@ from collections.abc import Sequence
 import sqlalchemy as sa
 from alembic import op
 
+import app.domain.models.base
+
 
 revision: str = 'e1a0bfd8b335'
 down_revision: str | None = None

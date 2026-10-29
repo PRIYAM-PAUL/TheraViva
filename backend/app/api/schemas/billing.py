@@ -64,3 +64,26 @@ class RefundOut(APIModel):
     reason: str | None = None
     status: str
     created_at: datetime
+
+
+class CheckoutStart(APIModel):
+    """Start an online (Razorpay) checkout for an invoice."""
+
+    invoice_id: str
+    amount_inr: int | None = Field(default=None, gt=0)
+
+
+class CheckoutStartOut(APIModel):
+    payment_id: str
+    order_id: str
+    key_id: str
+    amount: int  # minor units (paise)
+    currency: str
+    amount_inr: int
+
+
+class CheckoutVerify(APIModel):
+    payment_id: str
+    razorpay_order_id: str
+    razorpay_payment_id: str
+    razorpay_signature: str

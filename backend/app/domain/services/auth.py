@@ -1,7 +1,8 @@
-"""Authentication: patient phone-OTP and admin password login.
+"""Authentication: patient phone-OTP and staff password login.
 
-Two roles only (``patient``, ``admin``). Access tokens are short-lived JWTs;
-refresh tokens are opaque, stored hashed, and rotated on use.
+Roles: ``patient`` (OTP), ``reception`` / ``therapist`` / ``admin`` (password).
+Access tokens are short-lived JWTs; refresh tokens are opaque, stored hashed,
+and rotated on use.
 """
 
 from __future__ import annotations
@@ -17,7 +18,17 @@ from starlette.requests import Request
 
 from app.api.deps import client_ip, user_agent
 from app.config import settings
-from app.domain.models import ROLE_ADMIN, ROLE_PATIENT, OtpChallenge, RefreshToken, User, utcnow
+from app.domain.models import (
+    ROLE_ADMIN,
+    ROLE_PATIENT,
+    ROLE_RECEPTION,
+    ROLE_THERAPIST,
+    STAFF_ROLES,
+    OtpChallenge,
+    RefreshToken,
+    User,
+    utcnow,
+)
 from app.domain.services import audit
 from app.errors import UnauthorizedError, ValidationError
 from app.logging import get_logger
@@ -60,6 +71,38 @@ async def ensure_admin_bootstrap(session: AsyncSession) -> None:
     session.add(admin)
     await session.commit()
     logger.info("bootstrap admin created", extra={"extra_fields": {"email": admin.email}})
+
+
+async def ensure_staff_bootstrap(session: AsyncSession) -> None:
+    """Create demo reception + therapist accounts from settings (dev convenience).
+
+    Only creates a role if no user with that role exists yet, so it is safe to
+    call on every startup.
+    """
+    seeds = (
+        (ROLE_RECEPTION, settings.reception_email, settings.reception_name, settings.reception_password),
+        (ROLE_THERAPIST, settings.therapist_email, settings.therapist_name, settings.therapist_password),
+    )
+    for role, email, name, password in seeds:
+        if not email or not password:
+            continue
+        existing = await session.scalar(select(User).where(User.role == role).limit(1))
+        if existing:
+            continue
+        user = User(
+            id=str(uuid.uuid4()),
+            role=role,
+            email=email.lower(),
+            name=name,
+            password_hash=hash_password(password),
+            is_active=True,
+        )
+        session.add(user)
+        logger.info(
+            "bootstrap staff created",
+            extra={"extra_fields": {"role": role, "email": user.email}},
+        )
+    await session.commit()
 
 
 # --- OTP -------------------------------------------------------------------
@@ -134,7 +177,7 @@ async def staff_login(
     session: AsyncSession, email: str, password: str, request: Request
 ) -> tuple[User, str, str]:
     user = await session.scalar(select(User).where(User.email == email.lower()))
-    if user is None or user.role != ROLE_ADMIN or not verify_password(password, user.password_hash):
+    if user is None or user.role not in STAFF_ROLES or not verify_password(password, user.password_hash):
         # Uniform error to avoid revealing which accounts exist.
         raise UnauthorizedError("Email or password is incorrect.")
     if not user.is_active:

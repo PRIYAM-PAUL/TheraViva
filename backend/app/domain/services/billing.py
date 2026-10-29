@@ -128,6 +128,86 @@ async def record_payment(
     return payment
 
 
+async def start_checkout(
+    session: AsyncSession,
+    *,
+    invoice: Invoice,
+    amount_inr: int,
+    method: str,
+    actor: User | None,
+    request: Request,
+) -> tuple[Payment, dict]:
+    """Create a gateway order and a pending ``created`` payment.
+
+    The payment is only marked captured after a verified callback/webhook, so an
+    abandoned checkout leaves an honest ``created`` row rather than a fake success.
+    """
+    provider = get_payment_provider()
+    intent = await provider.create_payment(
+        invoice_id=invoice.id, amount_inr=amount_inr, method=method, note=None
+    )
+    payment = Payment(
+        id=str(uuid.uuid4()),
+        invoice_id=invoice.id,
+        provider=provider.name,
+        provider_order_id=intent.id,
+        provider_payment_id=intent.provider_payment_id,
+        amount_inr=amount_inr,
+        method=method,
+        status=intent.status,
+        raw=intent.raw,
+        created_at=utcnow(),
+    )
+    session.add(payment)
+    await audit.record(
+        session,
+        action="payment.checkout_started",
+        entity_type="payment",
+        entity_id=payment.id,
+        actor=actor,
+        after={"invoice": invoice.number, "amount_inr": amount_inr, "provider": provider.name},
+        request=request,
+    )
+    return payment, intent.raw
+
+
+async def confirm_checkout(
+    session: AsyncSession,
+    *,
+    payment: Payment,
+    provider_payment_id: str,
+    actor: User | None,
+    request: Request,
+) -> Payment:
+    """Mark a checkout payment captured after signature verification."""
+    if payment.status == "captured":
+        return payment
+    payment.provider_payment_id = provider_payment_id
+    payment.status = "captured"
+    invoice = await get_invoice(session, payment.invoice_id)
+    paid = int(
+        await session.scalar(
+            select(func.coalesce(func.sum(Payment.amount_inr), 0)).where(
+                Payment.invoice_id == invoice.id, Payment.status == "captured"
+            )
+        )
+        or 0
+    )
+    if paid >= invoice.total_inr:
+        invoice.status = "paid"
+        invoice.paid_at = utcnow()
+    await audit.record(
+        session,
+        action="payment.captured",
+        entity_type="payment",
+        entity_id=payment.id,
+        actor=actor,
+        after={"invoice": invoice.number, "amount_inr": payment.amount_inr},
+        request=request,
+    )
+    return payment
+
+
 async def refund(
     session: AsyncSession, payload: RefundCreate, *, actor: User | None, request: Request
 ) -> Refund:

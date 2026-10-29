@@ -11,14 +11,14 @@
 import * as React from "react";
 
 import { api, ApiError } from "@/lib/api";
-import { clearTokens, getAccessToken } from "@/lib/auth";
+import { clearSessionHint, clearTokens, getAccessToken, setSessionHint } from "@/lib/auth";
 import type { ApiUser, TokenPair } from "@/features/dashboard/types";
 
 interface AuthContextValue {
   user: ApiUser | null;
   loading: boolean;
-  signInPatient: (phone: string, code: string, name?: string) => Promise<void>;
-  signInStaff: (email: string, password: string) => Promise<void>;
+  signInPatient: (phone: string, code: string, name?: string) => Promise<ApiUser>;
+  signInStaff: (email: string, password: string) => Promise<ApiUser>;
   signOut: () => Promise<void>;
   refreshUser: () => Promise<void>;
 }
@@ -31,17 +31,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const applyTokens = React.useCallback((pair: TokenPair) => {
     setUser(pair.user);
+    setSessionHint(pair.user.role);
   }, []);
 
   const refreshUser = React.useCallback(async () => {
     if (!getAccessToken()) {
       setUser(null);
+      clearSessionHint();
       return;
     }
     try {
-      setUser(await api.auth.me());
+      const me = await api.auth.me();
+      setUser(me);
+      setSessionHint(me.role);
     } catch (error) {
       if (error instanceof ApiError && error.status === 401) clearTokens();
+      clearSessionHint();
       setUser(null);
     }
   }, []);
@@ -50,14 +55,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     let active = true;
     (async () => {
       if (!getAccessToken()) {
+        clearSessionHint();
         if (active) setLoading(false);
         return;
       }
       try {
         const me = await api.auth.me();
-        if (active) setUser(me);
+        if (active) {
+          setUser(me);
+          setSessionHint(me.role);
+        }
       } catch {
         clearTokens();
+        clearSessionHint();
         if (active) setUser(null);
       } finally {
         if (active) setLoading(false);
@@ -70,20 +80,25 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signInPatient = React.useCallback(
     async (phone: string, code: string, name?: string) => {
-      applyTokens(await api.auth.verifyOtp(phone, code, name));
+      const pair = await api.auth.verifyOtp(phone, code, name);
+      applyTokens(pair);
+      return pair.user;
     },
     [applyTokens],
   );
 
   const signInStaff = React.useCallback(
     async (email: string, password: string) => {
-      applyTokens(await api.auth.staffLogin(email, password));
+      const pair = await api.auth.staffLogin(email, password);
+      applyTokens(pair);
+      return pair.user;
     },
     [applyTokens],
   );
 
   const signOut = React.useCallback(async () => {
     await api.auth.logout();
+    clearSessionHint();
     setUser(null);
   }, []);
 

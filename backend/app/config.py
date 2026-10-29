@@ -39,6 +39,14 @@ class Settings(BaseSettings):
     admin_password: str = "admin12345"
     admin_name: str = "TheraViva Admin"
 
+    # Bootstrap staff (created on first startup if that role has no user yet).
+    reception_email: str = "reception@theraviva.local"
+    reception_password: str = "reception12345"
+    reception_name: str = "TheraViva Reception"
+    therapist_email: str = "therapist@theraviva.local"
+    therapist_password: str = "therapist12345"
+    therapist_name: str = "TheraViva Therapist"
+
     # --- OTP ---------------------------------------------------------------
     otp_dev_code: str = "123456"
     otp_ttl_minutes: int = 10
@@ -49,6 +57,9 @@ class Settings(BaseSettings):
 
     # --- Providers ---------------------------------------------------------
     payment_provider: str = "manual"
+    razorpay_key_id: str = ""
+    razorpay_key_secret: str = ""
+    razorpay_webhook_secret: str = ""
     email_provider: str = "fake"
     smtp_host: str = ""
     smtp_port: int = 587

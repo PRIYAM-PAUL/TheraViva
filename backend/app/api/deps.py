@@ -16,7 +16,7 @@ from pydantic import ValidationError as PydanticValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 from starlette.requests import Request
 
-from app.domain.models import ROLE_ADMIN, User
+from app.domain.models import ROLE_ADMIN, STAFF_ROLES, User
 from app.errors import ForbiddenError, UnauthorizedError, ValidationError
 from app.utils.pagination import clamp_limit
 from app.utils.security import decode_access_token
@@ -93,10 +93,25 @@ async def current_user(request: Request, session: AsyncSession) -> User:
     return user
 
 
-async def require_admin(request: Request, session: AsyncSession) -> User:
+async def require_role(request: Request, session: AsyncSession, *roles: str) -> User:
+    """Require the authenticated user to hold one of ``roles``.
+
+    The single authorization choke point: routes call this instead of checking
+    ``user.role`` themselves, so the role matrix lives in one place.
+    """
     user = await current_user(request, session)
-    if user.role != ROLE_ADMIN:
-        raise ForbiddenError("Administrator privileges are required.")
+    if user.role not in roles:
+        raise ForbiddenError("Your role does not permit this action.")
+    return user
+
+
+async def require_staff(request: Request, session: AsyncSession) -> User:
+    """Any staff member (reception, therapist or admin)."""
+    return await require_role(request, session, *STAFF_ROLES)
+
+
+async def require_admin(request: Request, session: AsyncSession) -> User:
+    user = await require_role(request, session, ROLE_ADMIN)
     return user
 
 

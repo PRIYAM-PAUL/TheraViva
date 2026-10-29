@@ -67,6 +67,12 @@ export function SiteHeader() {
 
           <div className="hidden items-center gap-2 lg:flex">
             <ThemeSwitcher />
+            <Link
+              href="/login"
+              className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}
+            >
+              Sign in
+            </Link>
             <a
               href={whatsAppLink()}
               target="_blank"
@@ -140,6 +146,13 @@ export function SiteHeader() {
                   className={buttonVariants({ size: "md" })}
                 >
                   Book an appointment
+                </Link>
+                <Link
+                  href="/login"
+                  onClick={closeMenu}
+                  className={buttonVariants({ variant: "outline", size: "md" })}
+                >
+                  Sign in
                 </Link>
                 <a
                   href={whatsAppLink()}

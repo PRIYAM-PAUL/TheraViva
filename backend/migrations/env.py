@@ -22,6 +22,19 @@ if config.config_file_name is not None:
 target_metadata = Base.metadata
 
 
+def render_item(type_, obj, autogen_context):  # noqa: ANN001, ANN201
+    """Render our custom ``UTCDateTime`` as a plain ``sa.DateTime``.
+
+    Without this, Alembic emits ``app.domain.models.base.UTCDateTime()`` in the
+    generated file, which fails at runtime unless the migration imports ``app``.
+    """
+    from app.domain.models.base import UTCDateTime
+
+    if type_ == "type" and isinstance(obj, UTCDateTime):
+        return "sa.DateTime()"
+    return False
+
+
 def run_migrations_offline() -> None:
     context.configure(
         url=settings.database_url,
@@ -29,6 +42,7 @@ def run_migrations_offline() -> None:
         literal_binds=True,
         render_as_batch=True,
         compare_type=True,
+        render_item=render_item,
     )
     with context.begin_transaction():
         context.run_migrations()
@@ -40,6 +54,7 @@ def do_run_migrations(connection) -> None:  # noqa: ANN001
         target_metadata=target_metadata,
         render_as_batch=True,
         compare_type=True,
+        render_item=render_item,
     )
     with context.begin_transaction():
         context.run_migrations()

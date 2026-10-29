@@ -22,7 +22,7 @@ export interface Page<T> {
   hasMore: boolean;
 }
 
-export type UserRole = "patient" | "admin";
+export type UserRole = "patient" | "reception" | "therapist" | "admin";
 
 export interface ApiUser {
   id: string;
@@ -163,4 +163,62 @@ export interface AdminDashboard {
   recentIntake: RecentIntakeRow[];
   recentAudit: RecentAuditRow[];
   hasRecords: boolean;
+}
+
+export interface AvailabilitySlot {
+  professionalId: string;
+  mode: string;
+  startsAt: string;
+  endsAt: string;
+  available: boolean;
+}
+
+export interface DocumentItem {
+  id: string;
+  ownerUserId: string | null;
+  appointmentId: string | null;
+  kind: string;
+  filename: string;
+  mime: string | null;
+  sizeBytes: number;
+  createdAt: string;
+}
+
+export interface ChatThread {
+  id: string;
+  patientUserId: string;
+  subject: string;
+  status: string;
+  lastMessageAt: string | null;
+  createdAt: string;
+  unreadCount: number;
+}
+
+export interface ChatMessage {
+  id: string;
+  threadId: string;
+  senderUserId: string | null;
+  senderRole: string;
+  body: string;
+  createdAt: string;
+  readAt: string | null;
+}
+
+export interface StaffUser {
+  id: string;
+  role: UserRole;
+  name: string | null;
+  email: string | null;
+  phone: string | null;
+  isActive: boolean;
+  createdAt: string;
+}
+
+export interface CheckoutOrder {
+  paymentId: string;
+  orderId: string;
+  keyId: string;
+  amount: number;
+  currency: string;
+  amountInr: number;
 }

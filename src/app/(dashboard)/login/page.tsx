@@ -16,6 +16,7 @@ import {
 } from "@/components/ui";
 import { apiBaseUrl, isApiConfigured } from "@/config/api";
 import { useAuth } from "@/features/dashboard/auth-context";
+import { homePathForRole } from "@/features/dashboard/roles";
 import { ApiError, api } from "@/lib/api";
 
 type Mode = "patient" | "staff";
@@ -39,7 +40,7 @@ export default function LoginPage() {
   const [password, setPassword] = React.useState("");
 
   React.useEffect(() => {
-    if (user) router.replace(user.role === "admin" ? "/admin" : "/dashboard");
+    if (user) router.replace(homePathForRole(user.role));
   }, [user, router]);
 
   const handleRequestOtp = async (event: React.FormEvent) => {
@@ -62,8 +63,8 @@ export default function LoginPage() {
     setError(null);
     setBusy(true);
     try {
-      await signInPatient(phone, code, name || undefined);
-      router.replace("/dashboard");
+      const me = await signInPatient(phone, code, name || undefined);
+      router.replace(homePathForRole(me.role));
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Could not verify the code.");
     } finally {
@@ -76,8 +77,8 @@ export default function LoginPage() {
     setError(null);
     setBusy(true);
     try {
-      await signInStaff(email, password);
-      router.replace("/admin");
+      const me = await signInStaff(email, password);
+      router.replace(homePathForRole(me.role));
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Could not sign in.");
     } finally {
@@ -91,8 +92,7 @@ export default function LoginPage() {
         <h1 className="font-display text-2xl font-semibold tracking-tight">Sign in</h1>
         <p className="text-sm text-muted-foreground">
           Patients sign in with a phone code. Practice staff sign in with their email.
-        </p>
-      </div>
+        </p>      </div>
 
       {!isApiConfigured ? (
         <Alert variant="warning">
@@ -131,7 +131,7 @@ export default function LoginPage() {
           }`}
         >
           <ShieldCheck className="size-4" aria-hidden="true" />
-          Practice admin
+          Practice staff
         </button>
       </div>
 

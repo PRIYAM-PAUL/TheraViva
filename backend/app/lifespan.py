@@ -12,6 +12,7 @@ from app.database import create_engine, create_sessionmaker
 from app.domain.models import Base
 from app.domain.services import auth as auth_service
 from app.logging import configure_logging, get_logger
+from app.seed.availability import seed_availability
 from app.seed.loader import seed_catalog
 
 logger = get_logger("app.lifespan")
@@ -32,7 +33,13 @@ async def lifespan(app: Starlette):
         seeded = await seed_catalog(session)
         if seeded:
             logger.info("catalog seeded", extra={"extra_fields": {"items": seeded}})
+        availability = await seed_availability(session)
+        if availability:
+            logger.info(
+                "availability seeded", extra={"extra_fields": {"rules": availability}}
+            )
         await auth_service.ensure_admin_bootstrap(session)
+        await auth_service.ensure_staff_bootstrap(session)
 
     logger.info(
         "startup complete",

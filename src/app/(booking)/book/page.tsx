@@ -1,11 +1,12 @@
 import { CalendarCheck, Clock, MessageCircle, Phone } from "lucide-react";
 import type { Metadata } from "next";
 
-import { RequestForm } from "@/components/appointment";
+import { BookingFlow } from "@/components/booking/booking-flow";
 import { Breadcrumbs } from "@/components/marketing/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
 import { Container, Section } from "@/components/ui";
 import { siteConfig } from "@/config";
+import { AuthProvider } from "@/features/dashboard/auth-context";
 import { breadcrumbJsonLd, buildMetadata } from "@/lib/seo";
 import { telLink, whatsAppLink } from "@/lib/contact";
 
@@ -30,11 +31,11 @@ export default function BookPage() {
 
           <div className="mt-6 space-y-3">
             <h1 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-              Request an appointment
+              Book an appointment
             </h1>
             <p className="max-w-prose text-pretty text-muted-foreground">
-              Tell us what you need and when suits you. The practice will reply to
-              confirm a time — usually within a working day.
+              Choose a real slot from the practice calendar, or send a request and
+              they&apos;ll offer the closest available time.
             </p>
           </div>
 
@@ -45,16 +46,18 @@ export default function BookPage() {
             </li>
             <li className="flex items-center gap-2">
               <CalendarCheck className="size-4 text-primary" aria-hidden="true" />
-              No payment required
+              Confirmed by the practice
             </li>
             <li className="flex items-center gap-2">
               <MessageCircle className="size-4 text-primary" aria-hidden="true" />
-              Sent straight to the practice
+              Saved securely to your record
             </li>
           </ul>
 
           <div className="mt-8">
-            <RequestForm />
+            <AuthProvider>
+              <BookingFlow />
+            </AuthProvider>
           </div>
 
           <div className="mt-8 rounded-xl border border-border bg-surface-warm p-5">

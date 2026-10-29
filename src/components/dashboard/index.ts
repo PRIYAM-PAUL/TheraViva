@@ -1,9 +1,17 @@
 export { AuthGuard } from "./auth-guard";
+export { AdminDashboardView } from "./admin-dashboard-view";
 export { BarChart } from "./bar-chart";
 export type { BarChartPoint, BarChartProps } from "./bar-chart";
+export { ChatPanel } from "./chat-panel";
+export type { ChatPanelProps } from "./chat-panel";
 export { DashboardHeader } from "./dashboard-header";
 export { DataTable } from "./data-table";
 export type { Column, DataTableProps } from "./data-table";
 export { EmptyState } from "./empty-state";
+export { GrafanaPanel } from "./grafana-panel";
 export { KpiCard } from "./kpi-card";
+export { PageHeader } from "./page-header";
+export type { PageHeaderProps } from "./page-header";
+export { PayOnlineButton } from "./pay-online-button";
+export type { PayOnlineButtonProps } from "./pay-online-button";
 export { StatusBadge } from "./status-badge";

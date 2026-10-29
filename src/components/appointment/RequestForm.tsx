@@ -29,6 +29,7 @@ import { getServiceBySlug, professionals, services, timeWindows } from "@/data";
 import { buildRequestMessage, buildRequestSubject } from "@/features/appointments/message";
 import { validateRequest, validateRequestFields } from "@/features/appointments/schema";
 import { useMounted } from "@/hooks/useMounted";
+import { ApiError, api } from "@/lib/api";
 import { trackLead } from "@/lib/analytics";
 import { mailtoLink, whatsAppLink } from "@/lib/contact";
 import { addDays, formatDateKey, startOfDay } from "@/lib/format";
@@ -73,6 +74,9 @@ export function RequestForm() {
   const [errors, setErrors] = React.useState<AppointmentFieldErrors>({});
   const [step, setStep] = React.useState(0);
   const [sent, setSent] = React.useState(false);
+  const [busy, setBusy] = React.useState(false);
+  const [reference, setReference] = React.useState<string | null>(null);
+  const [submitError, setSubmitError] = React.useState<string | null>(null);
 
   const setField = React.useCallback(
     (field: keyof AppointmentRequestValues, value: string | boolean) => {
@@ -184,6 +188,45 @@ export function RequestForm() {
     setSent(true);
   };
 
+  const submitRequest = async () => {
+    const result = validateRequest(values);
+    if (!result.success) {
+      setErrors(result.errors);
+      const firstInvalid = STEP_FIELDS.findIndex((fields) =>
+        fields.some((field) => field in result.errors),
+      );
+      if (firstInvalid >= 0) setStep(firstInvalid);
+      return;
+    }
+    setBusy(true);
+    setSubmitError(null);
+    try {
+      const saved = await api.intake.appointmentRequest({
+        mode: values.mode,
+        serviceSlug: values.serviceSlug,
+        professionalId: values.professionalId,
+        preferredDate: values.preferredDate,
+        preferredTime: values.preferredTime,
+        fullName: values.fullName,
+        phone: values.phone,
+        email: values.email,
+        patientName: values.patientName,
+        notes: values.notes,
+        consent: values.consent,
+      });
+      setReference(saved.reference);
+      setSent(true);
+    } catch (err) {
+      setSubmitError(
+        err instanceof ApiError
+          ? err.message
+          : "Could not send your request. Please try WhatsApp or email instead.",
+      );
+    } finally {
+      setBusy(false);
+    }
+  };
+
   const today = mounted ? startOfDay(new Date()) : null;
   const maxDate = today ? addDays(today, PREFERRED_DATE_HORIZON_DAYS) : null;
 
@@ -196,18 +239,24 @@ export function RequestForm() {
           </span>
           <div className="space-y-2">
             <h2 className="font-display text-2xl font-semibold tracking-tight">
-              Your request is ready to send
+              Request received
             </h2>
             <p className="mx-auto max-w-prose text-sm text-muted-foreground">
-              If your WhatsApp or email app opened, press send there. If nothing
-              opened, use the buttons below. The practice will reply to confirm a
-              time — this is not a confirmed appointment yet.
+              Your request has been saved
+              {reference ? (
+                <>
+                  {" "}
+                  with reference <strong>{reference}</strong>
+                </>
+              ) : null}
+              . The practice will reply to confirm a time — this is not a confirmed
+              appointment yet. You can also message them directly below.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button type="button" onClick={() => handleSend("whatsapp")}>
+            <Button type="button" variant="outline" onClick={() => handleSend("whatsapp")}>
               <MessageCircle className="size-4" aria-hidden="true" />
-              Send on WhatsApp
+              Also send on WhatsApp
             </Button>
             <Button
               type="button"
@@ -215,7 +264,7 @@ export function RequestForm() {
               onClick={() => handleSend("email")}
             >
               <Mail className="size-4" aria-hidden="true" />
-              Send by email
+              Also email the practice
             </Button>
           </div>
           <button
@@ -223,6 +272,8 @@ export function RequestForm() {
             onClick={() => {
               setSent(false);
               setStep(0);
+              setReference(null);
+              setSubmitError(null);
             }}
             className="text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
           >
@@ -403,9 +454,9 @@ export function RequestForm() {
         <Alert variant="info" className="mt-4">
           <AlertTitle>How this works</AlertTitle>
           <AlertDescription>
-            Sending a request does not book or pay for anything. Your message goes
-            straight to the practice by WhatsApp or email, and they will reply to
-            confirm a time.
+            Your request is saved to the practice securely — no payment is taken
+            here. The practice will reply to confirm a time. You can also message
+            them directly on WhatsApp or by email.
           </AlertDescription>
         </Alert>
 
@@ -435,23 +486,20 @@ export function RequestForm() {
               <ArrowRight className="size-4" aria-hidden="true" />
             </Button>
           ) : (
-            <div className="flex flex-col gap-2 sm:flex-row">
+            <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
+              {submitError ? (
+                <p role="alert" className="text-xs font-medium text-destructive sm:mr-2">
+                  {submitError}
+                </p>
+              ) : null}
               <Button
                 type="button"
-                variant="outline"
-                onClick={() => handleSend("email")}
+                loading={busy}
+                onClick={() => void submitRequest()}
                 className="w-full sm:w-auto"
               >
-                <Mail className="size-4" aria-hidden="true" />
-                Send by email
-              </Button>
-              <Button
-                type="button"
-                onClick={() => handleSend("whatsapp")}
-                className="w-full sm:w-auto"
-              >
-                <MessageCircle className="size-4" aria-hidden="true" />
-                Send on WhatsApp
+                <CheckCircle2 className="size-4" aria-hidden="true" />
+                Send request
               </Button>
             </div>
           )}

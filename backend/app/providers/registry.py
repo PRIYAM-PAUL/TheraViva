@@ -18,6 +18,7 @@ from app.providers.messaging.waha import WahaMessagingProvider
 from app.providers.payments.base import PaymentProvider
 from app.providers.payments.fake import FakePaymentProvider
 from app.providers.payments.manual import ManualPaymentProvider
+from app.providers.payments.razorpay import RazorpayPaymentProvider
 from app.providers.sms.base import SmsSender
 from app.providers.sms.console import ConsoleSmsSender, FakeSmsSender
 from app.providers.storage.base import Storage
@@ -26,6 +27,8 @@ from app.providers.storage.local import LocalStorage
 
 @lru_cache
 def get_payment_provider() -> PaymentProvider:
+    if settings.payment_provider == "razorpay":
+        return RazorpayPaymentProvider()
     if settings.payment_provider == "fake":
         return FakePaymentProvider()
     return ManualPaymentProvider()

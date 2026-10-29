@@ -6,10 +6,12 @@ children and adults.
 
 Built with Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS v4.
 
-> **Phase 1: public website only.** There is no backend, database, or payment
-> processing. Appointment requests are sent to the practice via WhatsApp or
-> email. Media shown is placeholder content until real assets are supplied, and
-> prices are indicative.
+> **Phase 1 built the public site; the platform layer is now in place.** The
+> marketing site is SEO-ready and static. A Starlette + SQLite backend
+> (`backend/`) persists bookings, prescriptions, chat and payments, and powers
+> the patient dashboard (`/dashboard`), the staff area (`/staff`) and the admin
+> overview (`/admin`). Razorpay runs in test mode. Media is still placeholder
+> content and prices are indicative.
 
 ## Getting started
 
@@ -60,7 +62,22 @@ npx tsc --noEmit  # type-check
 | `/locations/[city]` | Location page |
 | `/contact`, `/referral` | Contact and professional referrals |
 | `/about` | About the practice |
-| `/book` | Appointment request flow |
+| `/book` | Booking: real slots (signed in) or a persisted request |
+| `/login` | Sign in — patient phone OTP or staff password |
+| `/dashboard` | Patient overview (appointments, invoices, payments) |
+| `/dashboard/appointments` | All bookings, cancel |
+| `/dashboard/prescriptions` | Upload + view prescriptions/reports |
+| `/dashboard/messages` | Chat with the clinic |
+| `/dashboard/help` | Searchable FAQs |
+| `/staff` | Staff home (role-scoped) |
+| `/staff/appointments` | Confirm/complete/cancel appointments |
+| `/staff/intake` | Triage requests, enquiries, referrals |
+| `/staff/payments` | Invoices, payments, refunds, online checkout |
+| `/staff/patients` | Patient list |
+| `/staff/messages` | Clinic inbox |
+| `/staff/analytics` | KPIs + Grafana (admin) |
+| `/staff/users` | Staff accounts (admin) |
+| `/admin` | Admin overview (KPIs, revenue, engagement, SEO) |
 | `/legal/*` | Privacy, terms, refunds, disclaimer, accessibility |
 
 ## Editing content
@@ -100,6 +117,25 @@ uv run uvicorn app.main:app --reload   # http://localhost:8000
 Point the frontend at it with `NEXT_PUBLIC_API_URL` (see `.env.example`). See
 [`backend/README.md`](./backend/README.md) for endpoints, providers, tests and
 design notes.
+
+### Staff logins (development defaults)
+
+Created on first startup; change them in production.
+
+| Role | Email | Password |
+| --- | --- | --- |
+| Admin | `admin@theraviva.local` | `admin12345` |
+| Reception | `reception@theraviva.local` | `reception12345` |
+| Therapist | `therapist@theraviva.local` | `therapist12345` |
+
+Patients sign in with phone OTP; in development the code is always `123456`.
+
+### Observability (optional)
+
+`docker compose up -d` starts Prometheus (scraping the backend `/metrics`) and
+Grafana on `http://localhost:3001` with a provisioned "TheraViva overview" board.
+Point the frontend at it with `NEXT_PUBLIC_GRAFANA_URL` and
+`NEXT_PUBLIC_GRAFANA_DASHBOARD_UID`.
 
 ## Environment
 

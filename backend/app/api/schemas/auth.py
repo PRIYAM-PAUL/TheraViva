@@ -51,3 +51,19 @@ class TokenPair(APIModel):
     token_type: str = "bearer"
     expires_in: int
     user: UserOut
+
+
+class StaffUserCreate(APIModel):
+    """Admin creates a staff account (reception, therapist or admin)."""
+
+    email: str = Field(min_length=3, max_length=254)
+    password: str = Field(min_length=8, max_length=200)
+    role: str = Field(pattern="^(reception|therapist|admin)$")
+    name: str | None = Field(default=None, max_length=120)
+
+
+class StaffUserUpdate(APIModel):
+    name: str | None = Field(default=None, max_length=120)
+    role: str | None = Field(default=None, pattern="^(reception|therapist|admin)$")
+    is_active: bool | None = None
+    password: str | None = Field(default=None, min_length=8, max_length=200)

@@ -1,7 +1,14 @@
 """Identity: users, one-time-password challenges and refresh tokens.
 
-Only two roles exist: ``patient`` (a customer of the practice) and ``admin``
-(the practice owner). There is no therapist role and no permission matrix.
+Four roles exist:
+
+- ``patient``    — a customer of the practice (phone-OTP login).
+- ``reception``  — front-desk staff: bookings, intake, invoices, payments.
+- ``therapist``  — a clinician: own schedule, clinical notes, patient documents.
+- ``admin``      — the practice owner: everything, including users and catalog.
+
+Staff roles share the password login flow and are grouped in ``STAFF_ROLES``.
+Authorization is enforced by ``app.api.deps.require_role``.
 """
 
 from __future__ import annotations
@@ -14,7 +21,15 @@ from sqlalchemy.orm import Mapped, mapped_column
 from app.domain.models.base import Base, TimestampMixin, UTCDateTime
 
 ROLE_PATIENT = "patient"
+ROLE_RECEPTION = "reception"
+ROLE_THERAPIST = "therapist"
 ROLE_ADMIN = "admin"
+
+#: Roles that authenticate with email + password and can reach the staff area.
+STAFF_ROLES = (ROLE_RECEPTION, ROLE_THERAPIST, ROLE_ADMIN)
+
+#: Every role the platform recognises.
+ALL_ROLES = (ROLE_PATIENT, *STAFF_ROLES)
 
 
 class User(Base, TimestampMixin):
